@@ -4,10 +4,25 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     borderRadius: string;
-    
+    margin:{
+      ssm: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xlg: string;
+      xxlg: string;
+    },
+    fontSize:{
+      sm: string;
+      md: string;
+      lg: string;
+      xlg: string;
+      xxlg: string;
+    },
     colors: {
-      main: string;
-      secondary: string;
+      selectBtn: string;
+      green: string;
+      blue: string;
     };
   }
 }
