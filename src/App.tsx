@@ -1,12 +1,11 @@
 import { Routes,Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components'
-import './App.css';
-import { GlobalBody, Rootdiv } from './style/global-style'; 
-import { myTheme } from './style/theme';
+import { GlobalBody, FlowerRootdiv } from './style/global-style'; 
+import FlowerHome from './page/flowerMbti/flowerHome';
+import Result from './page/flowerMbti/result'
+import Flowers from './page/flowerMbti/flowers';
 import Home from './page/home';
-import Result from './page/result'
-import Flowers from './page/flowers';
 const App = (): JSX.Element => {
   const [minutes, setMinutes] = useState<number>(2);
   const [seconds, setSeconds] = useState<number>(59);
@@ -30,9 +29,10 @@ const App = (): JSX.Element => {
   return (
     <>
     <GlobalBody />
-    {minutes}분,{seconds} 후 갱신됩니다! @꽃 종류 갱신 타이머, 찾은 횟수 등 통계자료
+    {/* {minutes}분,{seconds} 후 갱신됩니다! @꽃 종류 갱신 타이머, 찾은 횟수 등 통계자료 */}
     <Routes>
-      <Route path="/" element={<Home/>}/>
+      <Route path="/" element={<Home/>} />
+      <Route path="/project/1" element={<FlowerHome/>}/>
       <Route path="/flowers" element={<Flowers/>} />
       <Route path="/result"  element={<Result/>} />
     </Routes>
