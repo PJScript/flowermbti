@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
-import defaultBackImage from '/home/js/Desktop/flowermbti/src/images/flower-3490152_640.jpg'
-export const Rootdiv = styled.div`
+import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/flower-3490152_640.jpg'
+export const FlowerRootdiv = styled.div`
   display:flex;
   flex-direction: column;
   height : 100vh;
@@ -9,7 +9,7 @@ export const Rootdiv = styled.div`
   background-color : #070604;
   color:white;
   opacity:0.95;
-  background-image : url(${defaultBackImage});
+  background-image : url(${flowerMbtiDefaultBackImg});
   background-size: auto;
   background-repeat : no-repeat;
   background-position : bottom;
@@ -17,6 +17,18 @@ export const Rootdiv = styled.div`
     background-position-y:7px;
   }
 `;
+
+export const CommonDiv = styled.div`
+  display:flex;
+  flex-direction: column;
+  height : 100vh;
+  width : 100%;
+  align-items: center;
+  background-color :whitesmoke;
+  background-size: auto;
+  background-repeat : no-repeat;
+  background-position : bottom;
+`
 
 export const GlobalBody = createGlobalStyle`
   body{

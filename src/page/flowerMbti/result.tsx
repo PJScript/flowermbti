@@ -1,5 +1,5 @@
 import React from "react";
-import { GlobalBody,Rootdiv } from "../style/global-style";
+import { GlobalBody,FlowerRootdiv } from "../../style/global-style";
 import styled from "styled-components";
 import { useNavigate } from "react-router";
 const Result = () => {
@@ -7,7 +7,7 @@ const Result = () => {
   return (
   <>
     <GlobalBody />
-    <Rootdiv>
+    <FlowerRootdiv>
     Result Page
       <Sample>
         <p>결과 페이지에요.</p>
@@ -16,7 +16,7 @@ const Result = () => {
       </Sample>
       <div className='hover' onClick={()=>{navigate('/')}}>다시하기</div>
       <div className='hover' onClick={()=>{navigate('/flowers')}}>꽃 종류 보러가기</div>
-    </Rootdiv>
+    </FlowerRootdiv>
   </>
   )
 }
