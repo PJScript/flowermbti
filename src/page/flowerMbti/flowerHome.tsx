@@ -8,7 +8,7 @@ const FlowerHome = (): JSX.Element => {
   const navigate = useNavigate();
   return (
     <>
-      {/* <GlobalBody /> */}
+      <GlobalBody />
       <ThemeProvider theme={myTheme}>
         <FlowerRootdiv>
             <MainContainer>
@@ -26,8 +26,8 @@ const FlowerHome = (): JSX.Element => {
                     <div onClick={() => { alert(' "지금 꽃이 되어보기" 버튼을 눌러 꽃이 되어보세요!') }}>오직 당신만을 위한 테스트</div>
                     <div onClick={() => { alert(' "지금 꽃이 되어보기" 버튼을 눌러 꽃이 되어보세요!') }}>지금 시작해보세요</div>
                   </SubTitleBox>
-                  <SelectBtn onClick={()=>{navigate('/result')}}>지금 꽃이 되어보기</SelectBtn>
-                  <SubTitleBox onClick={()=>{navigate('/flowers')}}><p>무슨 꽃이 있나요?</p></SubTitleBox>
+                  <SelectBtn onClick={()=>{navigate('/project/1/question')}}>지금 꽃이 되어보기</SelectBtn>
+                  <SubTitleBox onClick={()=>{navigate('/project/1/flowers')}}><p>무슨 꽃이 있나요?</p></SubTitleBox>
                 </TitleBox_center>
               </TitleBox>
             </MainContainer>
@@ -75,9 +75,10 @@ font-weight:bold;
 font-size:14px;
 &:hover{
   cursor: pointer;
+  background-color: rgb(255, 165, 86);
 }
 &:active{
-  background-color:black;
+  background-color:rgb(255, 165, 86,0.5);
   border:1px solid grey;
 }`
 
@@ -86,10 +87,20 @@ const MainContainer = styled.div`
 display: flex;
 width:100%;
 height : 100%;
-max-width:300px;
+max-width:400px;
 /* border: 1px solid green; */
 margin-top : 4px;
 align-items: center;
+animation:0.7s  ease-in-out fadeInEffect;
+@keyframes fadeInEffect {
+    0%{
+        
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
 `
 const MainContainer_workBox = styled.div`
   width:100%;

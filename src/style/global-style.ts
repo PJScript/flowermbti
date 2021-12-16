@@ -6,6 +6,7 @@ export const FlowerRootdiv = styled.div`
   height : 100vh;
   width : 100%;
   align-items: center;
+  /* overflow-y: scroll; */
   background-color : #070604;
   color:white;
   opacity:0.95;
@@ -13,6 +14,7 @@ export const FlowerRootdiv = styled.div`
   background-size: auto;
   background-repeat : no-repeat;
   background-position : bottom;
+  background-attachment: fixed;
   @media screen and (max-height:593px) { 
     background-position-y:7px;
   }
