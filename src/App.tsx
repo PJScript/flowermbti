@@ -6,6 +6,7 @@ import FlowerHome from './page/flowerMbti/flowerHome';
 import Result from './page/flowerMbti/result'
 import Flowers from './page/flowerMbti/flowers';
 import Home from './page/home';
+import './App.css'
 const App = (): JSX.Element => {
   const [minutes, setMinutes] = useState<number>(2);
   const [seconds, setSeconds] = useState<number>(59);

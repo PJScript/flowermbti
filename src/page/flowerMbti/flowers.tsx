@@ -13,7 +13,6 @@ const Flowers = () => {
         <FlowerDiv></FlowerDiv>
         <FlowerDiv></FlowerDiv>
         <FlowerDiv></FlowerDiv>
-
       </FlowerListContainer>
     </FlowerRootdiv>
   </>
