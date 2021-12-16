@@ -14,7 +14,7 @@ const Result = () => {
         <p>풀무원 님은 백련이 되었어요.</p>
         <p>백련의 꽃말은 '순결' 입니다.</p>
       </Sample>
-      <div className='hover' onClick={()=>{navigate('/')}}>다시하기</div>
+      <div className='hover' onClick={()=>{navigate('/project/1')}}>다시하기</div>
       <div className='hover' onClick={()=>{navigate('/flowers')}}>꽃 종류 보러가기</div>
     </FlowerRootdiv>
   </>
