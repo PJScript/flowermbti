@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/flower-3490152_640.jpg'
+import { dummy } from "../../dummy";
 import result1 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/roses-56702_1920.jpg'
 import result2 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/pink-peony-1631344_1920.jpg'
 import result3 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/poppy-192784.jpg'
@@ -15,7 +16,7 @@ const Result = () => {
   const [showRouteBox, setShowRouteBox] = useState<boolean>(true)
   const [showSectionFooter, setShowSectionFooter] = useState<boolean>(false)
   const [showInfoBox, setShowInfoBox] = useState<boolean>(false)
-  
+  const [randomNum, setRandomNum] = useState<number>(Math.floor(Math.random()*100))
   const clickFlowersBtn = () => {
     
     navigate('/project/1/flowers')
@@ -48,13 +49,10 @@ const Result = () => {
             <SectionTitle>
               <h2>결과</h2>
               <div style={{color:'#EAEAEA',fontWeight:'bold'}}>홍길동 <span> 님은</span></div>
-            <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>장미</span> 가(이) 되었어요!</div>
+            <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>{dummy[randomNum].flower}</span> 가(이) 되었어요!</div>
           </SectionTitle>
           <SectionBody>
-            <SectionContent>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              Why do we use it?
-              It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-            </SectionContent>
+            <SectionContent>{dummy[randomNum].content} </SectionContent>
           </SectionBody>
           {showRouteBox ?
             <RouteBtnBox>
@@ -135,18 +133,21 @@ const SectionBody = styled.section`
 border-radius: 5px;
 width:100%;
 background-color:rgba(238, 202, 155, 0.8);
+
 /* height:100vh; */
 /* overflow-y: scroll; */
 `
 const SectionContent = styled.div`
 display:flex;
 /* width:100%; */
+min-height: 200px;
 margin-top:14px;
 margin-bottom:14px;
 margin-left:20px;
 margin-right:20px;
 padding-top:14px;
 padding-bottom: 14px;
+
 `
 const Section_wrapper = styled.div`
 padding-left: 20px;
