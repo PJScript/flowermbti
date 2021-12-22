@@ -35,7 +35,6 @@ const Home = (): JSX.Element => {
             <SectionTitle>section2</SectionTitle>
             <SectionContent>content</SectionContent>
           </Section>
-
           <Section>
             <SectionTitle>section2</SectionTitle>
             <SectionContent>content</SectionContent>

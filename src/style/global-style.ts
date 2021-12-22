@@ -6,19 +6,19 @@ export const FlowerRootdiv = styled.div`
   height : 100vh;
   width : 100%;
   align-items: center;
-  /* overflow-y: scroll; */
   background-color : #070604;
+  overflow-y: hidden;
   color:white;
   opacity:0.95;
   background-image : url(${flowerMbtiDefaultBackImg});
-  background-size: auto;
+  background-size:auto;
   background-repeat : no-repeat;
   background-position : bottom;
   background-attachment: fixed;
   @media screen and (max-height:593px) { 
     background-position-y:7px;
   }
-`;
+`
 
 export const CommonDiv = styled.div`
   display:flex;
@@ -33,10 +33,10 @@ export const CommonDiv = styled.div`
 `
 
 export const GlobalBody = createGlobalStyle`
-  body{
-    padding:0;
-    margin:0;
-  }
+body{
+  margin:0;
+  padding:0;
+}
 `
 
 

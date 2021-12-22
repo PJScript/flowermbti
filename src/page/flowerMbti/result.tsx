@@ -11,7 +11,11 @@ import result3 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/poppy-192
 import result4 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/cherry-blossoms-4074651_1920.jpg'
 import { get_scroll_percentage } from "../../component/scrollPerMaker";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import rootReducer, { RootState } from "../../redux";
+
 const Result = () => {
+  let answerList = useSelector((state:RootState) => state);
   const navigate = useNavigate();
   const [showRouteBox, setShowRouteBox] = useState<boolean>(true)
   const [showSectionFooter, setShowSectionFooter] = useState<boolean>(false)
@@ -23,6 +27,7 @@ const Result = () => {
   }
 
   useEffect(()=>{
+    console.log(answerList,"값")
     window.addEventListener("scroll",(e)=>{
       if(get_scroll_percentage() >= 30){
         setShowRouteBox(true)
@@ -52,11 +57,12 @@ const Result = () => {
             <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>{dummy[randomNum].flower}</span> 가(이) 되었어요!</div>
           </SectionTitle>
           <SectionBody>
-            <SectionContent>{dummy[randomNum].content} </SectionContent>
+            <SectionContent>{dummy[randomNum].content}</SectionContent>
           </SectionBody>
           {showRouteBox ?
             <RouteBtnBox>
-              <div className='hover' onClick={() => { navigate('/project/1') }}>다시하기</div>
+              <div className='hover' onClick={() => { navigate('/') }}>다시하기</div>
+              {/* <div className='hover' onClick={() => { navigate('/project/1') }}>다시하기</div> */}
               <div className='hover' onClick={clickFlowersBtn}>꽃 종류 보러가기</div>
             </RouteBtnBox>
             :
@@ -92,7 +98,7 @@ const Result = () => {
             <div>아래 버튼을 통해 보내주세요 !</div>
             
             <p><button>문의하기</button></p>
-            <div>이메일 : lifeweb@gmail.com</div>
+            <div>이메일 : webtestlife@gmail.com</div>
           </InfoBox>
           :<InvisibleInfoBox></InvisibleInfoBox>}
 
@@ -139,7 +145,8 @@ background-color:rgba(238, 202, 155, 0.8);
 `
 const SectionContent = styled.div`
 display:flex;
-/* width:100%; */
+width:cover;
+word-break:keep-all;
 min-height: 200px;
 margin-top:14px;
 margin-bottom:14px;
@@ -152,10 +159,13 @@ padding-bottom: 14px;
 const Section_wrapper = styled.div`
 padding-left: 20px;
 padding-right:20px;
-max-width: 370px;
+width:370px;
 height:100%;
-
 animation: 0.6s ease-in-out fadeInEffect;
+
+@media screen and (max-width:433px){
+  width:89%;
+}
 @keyframes fadeInEffect {
     0%{
         opacity: 0;
@@ -194,10 +204,11 @@ const InvisibleRouteBtnBox = styled.div`
 display:flex;
 `
 const SectionFooter = styled.div`
+display:flex;
 color:black;
 /* max-height:400px; */
+width:100%;
 height:100%;
-display:flex;
 flex-direction: column;
 align-items:center;
 border-radius: 4px;
@@ -216,7 +227,10 @@ animation:0.7s  ease-in-out fadeInEffect;
 `
 const InvisibleSectionFooter = styled.div`
 display:flex;
+flex-direction: column;
+align-items:center;
 height:500px;
+width:100%;
 
 `
 const SectionFooterContent = styled.div`
@@ -267,6 +281,10 @@ const InfoBox = styled.div`
   margin-bottom:20px;
   padding-bottom:20px;
   border-radius: 4px;
+  word-break:keep-all;
+  text-align: center;
+  word-wrap: break-word;
+  word-break: break-all;
   animation:0.7s  ease-in-out fadeInEffect;
   @keyframes fadeInEffect {
     0%{

@@ -6,6 +6,10 @@ import { myTheme } from '../../style/theme';
 
 const FlowerHome = (): JSX.Element => {
   const navigate = useNavigate();
+  const clickStartBtn = () => {
+    navigate('/project/1/question')
+
+  }
   return (
     <>
       <GlobalBody />
@@ -26,9 +30,9 @@ const FlowerHome = (): JSX.Element => {
                     <div onClick={() => { alert(' "지금 꽃이 되어보기" 버튼을 눌러 꽃이 되어보세요!') }}>오직 당신만을 위한 테스트</div>
                     <div onClick={() => { alert(' "지금 꽃이 되어보기" 버튼을 눌러 꽃이 되어보세요!') }}>지금 시작해보세요</div>
                   </SubTitleBox>
-                  <SelectBtn onClick={()=>{navigate('/project/1/question')}}>지금 꽃이 되어보기</SelectBtn>
+                  <SelectBtn onClick={clickStartBtn}>지금 꽃이 되어보기</SelectBtn>
                   <SubTitleBox onClick={()=>{navigate('/project/1/flowers')}}><p>무슨 꽃이 있나요?</p></SubTitleBox>
-                </TitleBox_center>
+              </TitleBox_center>
               </TitleBox>
             </MainContainer>
         </FlowerRootdiv>
@@ -105,5 +109,4 @@ animation:0.7s  ease-in-out fadeInEffect;
 const MainContainer_workBox = styled.div`
   width:100%;
   height:100%;
-
 `
