@@ -7,7 +7,7 @@ export const FlowerRootdiv = styled.div`
   width : 100%;
   align-items: center;
   background-color : #070604;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   color:white;
   opacity:0.95;
   background-image : url(${flowerMbtiDefaultBackImg});

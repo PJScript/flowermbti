@@ -122,7 +122,6 @@ margin-top:5px;
 /* text-align: left; */
 `
 const SectionContent = styled.ul`
-
 display:flex;
 box-sizing:border-box;
 border:1px solid blue;

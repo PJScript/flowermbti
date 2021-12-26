@@ -1,8 +1,13 @@
 
 .hover:hover{
   cursor: pointer;
-  
 }
+
+.hoverOrange:hover{
+  cursor: pointer;
+  color:orange;
+}
+
 .test{
   color:rgb(255, 231, 231)
 }
