@@ -13,6 +13,8 @@ import { get_scroll_percentage } from "../../component/scrollPerMaker";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import rootReducer, { RootState } from "../../redux";
+import ShareBoxFooter from "../../component/flowerMbti/shareBoxFooter";
+import { scoreChecker } from "./scoreChecker";
 
 const Result = () => {
   let answerList = useSelector((state:RootState) => state);
@@ -27,6 +29,7 @@ const Result = () => {
   }
 
   useEffect(()=>{
+    console.log(scoreChecker(answerList))
     console.log(answerList,"값")
     window.addEventListener("scroll",(e)=>{
       if(get_scroll_percentage() >= 30){
@@ -50,9 +53,9 @@ const Result = () => {
       <GlobalBody />
       <Sample>
           Result Page
+          <h2>결과</h2>
           <Section_wrapper>
             <SectionTitle>
-              <h2>결과</h2>
               <div style={{color:'#EAEAEA',fontWeight:'bold'}}>홍길동 <span> 님은</span></div>
             <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>{dummy[randomNum].flower}</span> 가(이) 되었어요!</div>
           </SectionTitle>
@@ -63,30 +66,13 @@ const Result = () => {
             <RouteBtnBox>
               <div className='hover' onClick={() => { navigate('/') }}>다시하기</div>
               {/* <div className='hover' onClick={() => { navigate('/project/1') }}>다시하기</div> */}
-              <div className='hover' onClick={clickFlowersBtn}>꽃 종류 보러가기</div>
+              <div className='hover' onClick={clickFlowersBtn}>꽃 종류 보기</div>
             </RouteBtnBox>
             :
             <InvisibleRouteBtnBox></InvisibleRouteBtnBox>
           }
           {showSectionFooter ?
-          <SectionFooter>
-            <h3>공유</h3>
-            <SectionFooterContent>
-              <div>친구에게 공유해 보세요!</div>
-              <ShareBtnBox>
-                <ShareBtnKakao className="hover">
-                  <div>Kakao</div>
-                </ShareBtnKakao>
-                <ShareBtnFaceBook className="hover">
-                  <div>faceBook</div>
-                </ShareBtnFaceBook>
-                <ShareBtnInstaGram className="hover">
-                  <div>InstaGram</div>
-                </ShareBtnInstaGram>
-              </ShareBtnBox>
-
-            </SectionFooterContent>
-          </SectionFooter>
+          <ShareBoxFooter></ShareBoxFooter>
           : 
           <InvisibleSectionFooter></InvisibleSectionFooter>}
           {showInfoBox ?           
@@ -96,9 +82,9 @@ const Result = () => {
             <p style={{color:'black',fontWeight:'bold'}}>문의 사항과 피드백 환영 합니다.</p>
             <div>직접 이메일로 보내시거나 </div>
             <div>아래 버튼을 통해 보내주세요 !</div>
-            
             <p><button>문의하기</button></p>
             <div>이메일 : webtestlife@gmail.com</div>
+            <span>트위터 : <a target='_blank' href='https://twitter.com/testweblife'>https://twitter.com/testweblife</a> </span>
           </InfoBox>
           :<InvisibleInfoBox></InvisibleInfoBox>}
 
@@ -123,7 +109,6 @@ background-blend-mode: difference;
 background-repeat:no-repeat;
 /* background-position: center; */
 background-attachment: fixed;
-
 `
 
 
@@ -132,7 +117,8 @@ display:flex;
 flex-direction:column;
 align-items: center;
 font-size:1.2em;
-mix-blend-mode: difference;
+/* mix-blend-mode: difference; */
+background-color:grey;
 `
 
 const SectionBody = styled.section`
@@ -231,46 +217,6 @@ flex-direction: column;
 align-items:center;
 height:500px;
 width:100%;
-
-`
-const SectionFooterContent = styled.div`
-/* background-color:blue; */
-border:1px solid grey;
-border-radius: 4px;
-padding:4px;
-
-`
-
-const ShareBtnBox = styled.ul`
-display:flex;
-flex-direction:column;
-text-align: center;
-padding:0px;
-list-style-type: none;
-
-/* border:1px solid grey; */
-
-`
-
-const ShareBtnKakao = styled.li`
-color:black;
-font-weight:bold;
-background-color:yellow;
-margin-bottom:10px;
-`
-
-const ShareBtnFaceBook = styled.li`
-color:whitesmoke;
-font-weight:bold;
-background-color: blue;
-margin-bottom:10px;
-`
-
-const ShareBtnInstaGram = styled.li`
-color:black;
-font-weight: bold;
-background-color: pink;
-margin-bottom:10px;
 `
 
 const InfoBox = styled.div`

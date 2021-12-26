@@ -6,8 +6,9 @@ import { useState, useRef} from "react";
 import { questionAnswer } from "../../questionAndAnswer";
 import { useEffect } from "react";
 import { insertAnswer } from "../../redux/action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import '../../App.css'
+
 const FlowerQuestion = (): JSX.Element => {
   const dispatch = useDispatch()
   const element = useRef()
@@ -18,10 +19,11 @@ const FlowerQuestion = (): JSX.Element => {
   let navigate = useNavigate()
   
   const GoNextQuestion = (e:any) => {
-
+    
     let a = questionAnswer[count].answer.indexOf(e.target.innerText)
-    console.log(a+1,"찾은 인덱스")
-    dispatch(insertAnswer(count,a+1))
+    console.log(a,"찾은 인덱스")
+
+    dispatch(insertAnswer(count,a))
     setScore([...score,a])
     setShow(false)
     setTimeout(()=>{

@@ -1,0 +1,44 @@
+@font-face {
+  /* 사용할 폰트의 이름 */
+  font-family: "Shizuru";
+  font-display: fallback;
+
+  
+ 
+  src: url("/home/js/Desktop/flowermbti/src/static/fonts/Shizuru-Regular.ttf") format("truetype"), url("/home/js/Desktop/flowermbti/src/static/fonts/Shizuru-Regular.ttf")
+      format("ttf"), url("/home/js/Desktop/flowermbti/src/static/fonts/Shizuru-Regular.ttf") format("embedded-opentype");
+
+  /* 사용할 폰트의 기본 스타일 */
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  /* 사용할 폰트의 이름 */
+  font-family: "NanumPenScript";
+  font-display: fallback;
+
+  
+ 
+  src: url("/home/js/Desktop/flowermbti/src/static/fonts/NanumPenScript-Regular.ttf") format("truetype"), url("/home/js/Desktop/flowermbti/src/static/fonts/NanumPenScript-Regular.ttf")
+      format("ttf"), url("/home/js/Desktop/flowermbti/src/static/fonts/NanumPenScript-Regular.ttf") format("embedded-opentype");
+
+  /* 사용할 폰트의 기본 스타일 */
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  /* 사용할 폰트의 이름 */
+  font-family: "BlackAndWhitePicture";
+  font-display: fallback;
+
+  
+ 
+  src: url("/home/js/Desktop/flowermbti/src/static/fonts/BlackAndWhitePicture-Regular.ttf") format("truetype"), url("/home/js/Desktop/flowermbti/src/static/fonts/BlackAndWhitePicture-Regular.ttf")
+      format("ttf"), url("/home/js/Desktop/flowermbti/src/static/fonts/BlackAndWhitePicture-Regular.ttf") format("embedded-opentype");
+
+  /* 사용할 폰트의 기본 스타일 */
+  font-weight: 400;
+  font-style: normal;
+}

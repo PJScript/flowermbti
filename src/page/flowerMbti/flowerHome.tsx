@@ -71,12 +71,15 @@ const SubTitleBox = styled.div`
 const SelectBtn = styled.button`
 background-color: ${(props)=> props.theme.colors.selectBtn};
 height:66px;
-width:100%;
+width:85%;
+/* margin-left:20px;
+margin-right:20px; */
 border-radius: ${(props) => props.theme.margin.ssm};
 margin-bottom:10px;
 color:white;
 font-weight:bold;
 font-size:14px;
+
 &:hover{
   cursor: pointer;
   background-color: rgb(255, 165, 86);
@@ -84,7 +87,8 @@ font-size:14px;
 &:active{
   background-color:rgb(255, 165, 86,0.5);
   border:1px solid grey;
-}`
+}
+`
 
 
 const MainContainer = styled.div`
