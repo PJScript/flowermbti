@@ -103,7 +103,7 @@ const DivisibleQuestionBox = styled.div`
 display:flex;
 flex-direction: column;
 width:100%;
-
+pointer-events:none;
 animation: 0.2s ease-in-out fadeOutEffect;
 @keyframes fadeOutEffect {
     0%{

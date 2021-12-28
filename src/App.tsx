@@ -34,8 +34,8 @@ const App = (): JSX.Element => {
     <GlobalBody />
     {/* {minutes}분,{seconds} 후 갱신됩니다! @꽃 종류 갱신 타이머, 찾은 횟수 등 통계자료 */}
     <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/project/1" element={<FlowerHome/>}/>
+      {/* <Route path="/" element={<Home/>} /> */}
+      <Route path="/" element={<FlowerHome/>}/>
       <Route path="/project/1/question" element={<FlowerQuestion/>} />
       <Route path="/project/1/flowers" element={<Flowers/>} />
       <Route path="/project/1/result"  element={<Result/>} />

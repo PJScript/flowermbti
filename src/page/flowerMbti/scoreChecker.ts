@@ -13,7 +13,7 @@ export const scoreChecker = (data:any):any => {
   let score_JP :any
 
   if(data.length !== 12){
-    return {code:'-length',msg:'answer data length error please retry more slowly'}
+    return 'answer data length error please retry more slowly'
   }else{
     const mbti_EI = data.slice(0,3)
     const mbti_SN = data.slice(3,6)
@@ -31,25 +31,20 @@ export const scoreChecker = (data:any):any => {
   TF = ${score_TF.box}, ${score_TF.alphabetQueue} 
   JP = ${score_JP.box}, ${score_JP.alphabetQueue}
   `)
-  const result_EI = alphabetParser(score_EI.alphabetQueue,['E','I'])
-  const result_SN = alphabetParser(score_SN.alphabetQueue,['S','N'])
-  const result_TF = alphabetParser(score_TF.alphabetQueue,['T','F'])
-  const result_JP = alphabetParser(score_JP.alphabetQueue,['J','P'])
-  
-  // return `EI = ${score_EI} SN = ${score_SN} TF = ${score_TF} JP = ${score_JP}`
-  return `
-  ${result_EI}, ${result_SN}, ${result_TF}, ${result_JP} 입니다.
-  ${result_EI} 지수 : ${score_EI.box},
-  ${result_SN} 지수 : ${score_SN.box},
-  ${result_TF} 지수 : ${score_TF.box},
-  ${result_JP} 지수 : ${score_JP.box}
-  `
+  const result_EI:string = alphabetParser(score_EI.alphabetQueue,['E','I'])
+  const result_SN:string = alphabetParser(score_SN.alphabetQueue,['S','N'])
+  const result_TF:string = alphabetParser(score_TF.alphabetQueue,['T','F'])
+  const result_JP:string = alphabetParser(score_JP.alphabetQueue,['J','P'])
+
+  return `${result_EI},${result_SN},${result_TF},${result_JP}`
+
 }
 
-const scoreParser = (arr:Array<any>, box:any, alphabet:Array<string>) => {   // 각 항목별 점수 확인 후 모두 더함
+const scoreParser = (arr:Array<any>, box:number, alphabet:Array<string>) => {   // 각 항목별 점수 확인 후 모두 더함
   box = 0;
   let alphabetQueue = []
   for(let i=0; i<=arr.length-1; i++){  
+    console.log(i)
       if(arr[i].answerIdx === 0){
         alphabetQueue.push(alphabet[0])
         box = box + 2
@@ -72,16 +67,13 @@ const alphabetParser = (alphabetArray:Array<string>, standardArray:Array<string>
 
   for(let i=0; i<=alphabetArray.length-1; i++){
     let callKey = alphabetArray[i]
-
+    console.log(i)
     if(callKey in testObj){
       testObj[callKey] = testObj[callKey] + 1
     }else{
       testObj[callKey] = 1
     }
   }
-  console.log(testObj,"테스트 값")
-  console.log(testObj[alphabetArray[0]],"0번값")
-  console.log(testObj[alphabetArray[1]],"1번값")
 
   if(testObj[standardArray[0]] === 3){
     return standardArray[0] 
@@ -89,9 +81,10 @@ const alphabetParser = (alphabetArray:Array<string>, standardArray:Array<string>
     return standardArray[0]
   }else if(testObj[standardArray[0]] < testObj[standardArray[1]]){
     return standardArray[1]
+  }else if(!testObj[standardArray[0]]){
+    return standardArray[1]
   }else{
-    // return testObj[alphabetArray[0]]
-    return {code:'-length',msg:'alphabetArray Data length error please retry more slowly'}
+    return ''
   }
 }
 

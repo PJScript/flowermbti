@@ -3,13 +3,17 @@ import styled, { ThemeProvider } from 'styled-components'
 import { GlobalBody, FlowerRootdiv } from '../../style/global-style';
 import { useNavigate } from 'react-router-dom';
 import { myTheme } from '../../style/theme';
+import { useDispatch } from 'react-redux';
+import { removeAnswer } from '../../redux/action';
 
 const FlowerHome = (): JSX.Element => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const clickStartBtn = () => {
     navigate('/project/1/question')
 
   }
+  dispatch(removeAnswer())
   return (
     <>
       <GlobalBody />
