@@ -7,16 +7,28 @@ import reportWebVitals from './reportWebVitals';
 
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
-import rootReducer from './redux/reducer'
+import { rootReducer } from './redux/index'
+import { persistReducer, persistStore } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import * as createLogger from 'redux-logger';
+import { PersistGate } from 'redux-persist/integration/react';
 
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+const persistedReducer = persistReducer(persistConfig,rootReducer)
+const store = createStore(persistedReducer, applyMiddleware(createLogger.logger as any))
+// const store = createStore(rootReducer, applyMiddleware(createLogger.logger as any))
+let persistor = persistStore(store)
 
-const store = createStore(rootReducer, applyMiddleware(createLogger.logger as any))
 ReactDOM.render(
   <Provider store={store}>
+    <PersistGate loading={undefined} persistor={persistor}>    
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );

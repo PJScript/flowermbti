@@ -192,7 +192,7 @@ export let dummy = [
   },
   {
     "flower": "벚꽃",
-    "content": "벚꽃 이(가) 되었어요!",
+    "content": "벚꽃이 되었어요!",
     "subtitle": [
       "정신의 아름다움",
       "가인"
@@ -207,8 +207,8 @@ export let dummy = [
     ]
   },
   {
-    "flower": "복숭아",
-    "content": "복숭아 이(가) 되었어요!",
+    "flower": "복숭아꽃",
+    "content": "복숭아꽃이 되었어요!",
     "subtitle": [
       "당신 같은 매력"
     ]
@@ -312,14 +312,14 @@ export let dummy = [
   },
   {
     "flower": "수국",
-    "content": "수국 이(가) 되었어요!",
+    "content": "수국이 되었어요!",
     "subtitle": [
       "냉정,무정,거만(백색: 변덕; 청색: 냉담; 분홍색: 처녀의 꿈)"
     ]
   },
   {
     "flower": "수선화",
-    "content": "수선화 이(가) 되었어요!",
+    "content": "수선화가 되었어요!",
     "subtitle": [
       "자만심",
       "자존심",
@@ -342,7 +342,7 @@ export let dummy = [
   },
   {
     "flower": "시클라멘",
-    "content": "시클라멘 이(가) 되었어요!",
+    "content": "시클라멘이 되었어요!",
     "subtitle": [
       "수줍음",
       "질투",
@@ -381,7 +381,7 @@ export let dummy = [
   },
   {
     "flower": "아이리스",
-    "content": "아이리스 이(가) 되었어요!",
+    "content": "아이리스가 되었어요!",
     "subtitle": [
       "소식",
       "격정"
@@ -534,7 +534,7 @@ export let dummy = [
   },
   {
     "flower": "작약",
-    "content": "작약 이(가) 되었어요!",
+    "content": "작약이 되었어요!",
     "subtitle": [
       "수치",
       "수줍음"
@@ -601,7 +601,7 @@ export let dummy = [
   },
   {
     "flower": "철쭉꽃",
-    "content": "철쭉꽃 이(가) 되었어요!",
+    "content": "철쭉꽃이 되었어요!",
     "subtitle": [
       "정열"
     ]
@@ -630,7 +630,7 @@ export let dummy = [
   },
   {
     "flower": "카멜리아",
-    "content": "카멜리아 이(가) 되었어요!",
+    "content": "카멜리아가 되었어요!",
     "subtitle": [
       "자랑",
       "겸손한 미점"
@@ -652,14 +652,14 @@ export let dummy = [
   },
   {
     "flower": "코스모스",
-    "content": "코스모스 이(가) 되었어요!",
+    "content": "코스모스가 되었어요!",
     "subtitle": [
       "소녀의 순결 . 소녀의 순애"
     ]
   },
   {
     "flower": "클로버",
-    "content": "클로버 이(가) 되었어요!",
+    "content": "클로버가 되었어요!",
     "subtitle": [
       "희망이 이루어짐",
       "행복 ."
@@ -702,7 +702,7 @@ export let dummy = [
   },
   {
     "flower": "튤립",
-    "content": "튤립 이(가) 되었어요!",
+    "content": "튤립이 되었어요!",
     "subtitle": [
       "자애",
       "명예",
@@ -718,7 +718,7 @@ export let dummy = [
   },
   {
     "flower": "파슬리",
-    "content": "파슬리 이(가) 되었어요!",
+    "content": "파슬리가 되었어요!",
     "subtitle": [
       "승리",
       "축제"
@@ -763,7 +763,7 @@ export let dummy = [
   },
   {
     "flower": "포인세티아",
-    "content": "포인세티아 이(가) 되었어요!",
+    "content": "포인세티아가 되었어요!",
     "subtitle": [
       "나의 마음은 타고 있습니다",
       "축복"
@@ -785,7 +785,7 @@ export let dummy = [
   },
   {
     "flower": "프리지아",
-    "content": "프리지아 이(가) 되었어요!",
+    "content": "프리지아가 되었어요!",
     "subtitle": [
       "순결",
       "순진한 마음"
@@ -849,7 +849,7 @@ export let dummy = [
   },
   {
     "flower": "히아신스",
-    "content": "히아신스 이(가) 되었어요!",
+    "content": "히아신스가 되었어요!",
     "subtitle": [
       "마음의 기쁨"
     ]

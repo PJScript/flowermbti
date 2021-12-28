@@ -1,11 +1,14 @@
 import { combineReducers } from "redux";
-import answerReducer from "./reducer";
+import { answerReducer,mbtiContentReducer } from "./reducer";
+
 
 export const rootReducer = combineReducers({
-  answerReducer
+  answerReducer,
+  mbtiContentReducer
 })
 
-export default rootReducer;
 
+
+// export default rootReducer;
 export type RootState = ReturnType<typeof rootReducer>
 

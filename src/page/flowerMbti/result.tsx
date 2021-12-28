@@ -9,28 +9,42 @@ import result1 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/roses-567
 import result2 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/pink-peony-1631344_1920.jpg'
 import result3 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/poppy-192784.jpg'
 import result4 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/cherry-blossoms-4074651_1920.jpg'
+
 import { get_scroll_percentage } from "../../component/scrollPerMaker";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import rootReducer, { RootState } from "../../redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux";
 import ShareBoxFooter from "../../component/flowerMbti/shareBoxFooter";
 import { scoreChecker } from "./scoreChecker";
+import dummyContent from "../../component/flowerMbti/dummyContent";
+import { removeAnswer } from "../../redux/action";
+
 
 const Result = () => {
-  let answerList = useSelector((state:RootState) => state);
+  const dispatch = useDispatch()
+  let answerList = useSelector((state:RootState) => state.answerReducer);
+  let mbtiContentList = useSelector((state:RootState) => state.mbtiContentReducer);
   const navigate = useNavigate();
   const [showRouteBox, setShowRouteBox] = useState<boolean>(true)
   const [showSectionFooter, setShowSectionFooter] = useState<boolean>(false)
   const [showInfoBox, setShowInfoBox] = useState<boolean>(false)
-  const [randomNum, setRandomNum] = useState<number>(Math.floor(Math.random()*100))
+  const [mbtiContent, setMbti]  = useState<any>('')
+  const [mbtiFlowerUrl, setMbtiFlowerUrl] = useState<string>('')
   const clickFlowersBtn = () => {
     
     navigate('/project/1/flowers')
   }
 
+  const clickReplayBtn = () => {
+    navigate('/')
+    dispatch(removeAnswer())
+  }
   useEffect(()=>{
-    console.log(scoreChecker(answerList))
-    console.log(answerList,"값")
+    // dummyContent(answerList)
+    let mbti = scoreChecker(answerList)
+    mbti = mbti.replaceAll(",","")
+    setMbti(dummyContent(mbti))
+    console.log(mbtiContent,"mbti데이터")
     window.addEventListener("scroll",(e)=>{
       if(get_scroll_percentage() >= 30){
         setShowRouteBox(true)
@@ -47,7 +61,16 @@ const Result = () => {
       // console.log(window.scrollY,"스크롤한 높이")
     });
 
-  })
+  },[])
+  useEffect(()=>{
+    console.log(mbtiContent,"콘텐츠 확인")
+    setMbtiFlowerUrl(mbtiContent.img)
+
+  },[mbtiContent])
+
+  useEffect(()=>{
+    console.log(mbtiFlowerUrl,"꽃")
+  },[mbtiFlowerUrl])
   return (
     <>
       <GlobalBody />
@@ -57,15 +80,18 @@ const Result = () => {
           <Section_wrapper>
             <SectionTitle>
               <div style={{color:'#EAEAEA',fontWeight:'bold'}}>홍길동 <span> 님은</span></div>
-            <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>{dummy[randomNum].flower}</span> 가(이) 되었어요!</div>
+            <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>작약꽃</span> 가(이) 되었어요!</div>
           </SectionTitle>
           <SectionBody>
-            <SectionContent>{dummy[randomNum].content}</SectionContent>
+
+            <SectionContent>{mbtiContent.list}</SectionContent>
+            {/* <img width='100%' src={testImg}></img> */}
+            <MbtiFlowerImg></MbtiFlowerImg>
+            <SectionContent>{mbtiContent.normal}</SectionContent>
           </SectionBody>
           {showRouteBox ?
             <RouteBtnBox>
-              <div className='hover' onClick={() => { navigate('/') }}>다시하기</div>
-              {/* <div className='hover' onClick={() => { navigate('/project/1') }}>다시하기</div> */}
+              <div className='hover' onClick={clickReplayBtn}>다시하기</div>
               <div className='hover' onClick={clickFlowersBtn}>꽃 종류 보기</div>
             </RouteBtnBox>
             :
@@ -241,8 +267,13 @@ const InfoBox = styled.div`
     }
 }
 `
-
 const InvisibleInfoBox = styled.div`
 height:500px;
+`
+
+const MbtiFlowerImg = styled.div`
+width:100%;
+/* height:100%; */
+
 `
 export default Result;
