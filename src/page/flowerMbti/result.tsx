@@ -6,7 +6,7 @@ import { useState } from "react";
 import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/flower-3490152_640.jpg'
 import { dummy } from "../../dummy";
 import result1 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/roses-56702_1920.jpg'
-import result2 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/pink-peony-1631344_1920.jpg'
+import result2 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/leaf-g6e755a8b7_1920-removebg.png'
 import result3 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/poppy-192784.jpg'
 import result4 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/cherry-blossoms-4074651_1920.jpg'
 
@@ -18,7 +18,7 @@ import ShareBoxFooter from "../../component/flowerMbti/shareBoxFooter";
 import { scoreChecker } from "./scoreChecker";
 import dummyContent from "../../component/flowerMbti/dummyContent";
 import { removeAnswer } from "../../redux/action";
-
+import test from "/home/js/Desktop/flowermbti/src/static/resultSmallImg/royalAzalea.jpg"
 
 const Result = () => {
   const dispatch = useDispatch()
@@ -30,9 +30,15 @@ const Result = () => {
   const [showInfoBox, setShowInfoBox] = useState<boolean>(false)
   const [mbtiContent, setMbti]  = useState<any>('')
   const [mbtiFlowerUrl, setMbtiFlowerUrl] = useState<string>('')
+  const [mbtiFlowerName, setMbtiFlowerName] = useState<string>('')
+  const testFnc = (e:any) => {
+    console.log(e)
+    console.log(test)
+    e.target.setAttribute('src',result2)
+  }
   const clickFlowersBtn = () => {
-    
-    navigate('/project/1/flowers')
+    alert('아직 오픈 전이에요!')
+    // navigate('/project/1/flowers')
   }
 
   const clickReplayBtn = () => {
@@ -43,13 +49,14 @@ const Result = () => {
     // dummyContent(answerList)
     let mbti = scoreChecker(answerList)
     mbti = mbti.replaceAll(",","")
-    setMbti(dummyContent(mbti))
-    console.log(mbtiContent,"mbti데이터")
+    let resultMbti = dummyContent(mbti)
+    setMbti(resultMbti)
+    setMbtiFlowerUrl(resultMbti.img)
+    setMbtiFlowerName(resultMbti.flowerName)
     window.addEventListener("scroll",(e)=>{
       if(get_scroll_percentage() >= 30){
         setShowRouteBox(true)
       }
-      
       if(get_scroll_percentage() >= 55){
         setShowSectionFooter(true)
       }
@@ -62,14 +69,9 @@ const Result = () => {
     });
 
   },[])
-  useEffect(()=>{
-    console.log(mbtiContent,"콘텐츠 확인")
-    setMbtiFlowerUrl(mbtiContent.img)
-
-  },[mbtiContent])
 
   useEffect(()=>{
-    console.log(mbtiFlowerUrl,"꽃")
+    console.log(mbtiFlowerUrl,"꽃 주소")
   },[mbtiFlowerUrl])
   return (
     <>
@@ -77,22 +79,23 @@ const Result = () => {
       <Sample>
           Result Page
           <h2>결과</h2>
-          <Section_wrapper>
-            <SectionTitle>
-              <div style={{color:'#EAEAEA',fontWeight:'bold'}}>홍길동 <span> 님은</span></div>
-            <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>작약꽃</span> 가(이) 되었어요!</div>
+        <Section_wrapper>
+          <SectionTitle>
+            <div style={{ color: '#EAEAEA', fontWeight: 'bold' }}>홍길동 <span> 님은</span></div>
+            <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>{mbtiFlowerName}</span> 가(이) 되었어요!</div>
           </SectionTitle>
           <SectionBody>
+            <MbtiFlowerImg>
+              <img width='100%' src={mbtiFlowerUrl}></img>
+            </MbtiFlowerImg>
 
             <SectionContent>{mbtiContent.list}</SectionContent>
-            {/* <img width='100%' src={testImg}></img> */}
-            <MbtiFlowerImg></MbtiFlowerImg>
             <SectionContent>{mbtiContent.normal}</SectionContent>
           </SectionBody>
           {showRouteBox ?
             <RouteBtnBox>
               <div className='hover' onClick={clickReplayBtn}>다시하기</div>
-              <div className='hover' onClick={clickFlowersBtn}>꽃 종류 보기</div>
+              <div className='hover' onClick={clickFlowersBtn}>정원 들어가기</div>
             </RouteBtnBox>
             :
             <InvisibleRouteBtnBox></InvisibleRouteBtnBox>
@@ -127,12 +130,13 @@ background-color : #070604;
 display:flex;
 flex-direction: column;
 align-items: center;
-background-image: url(${result2});
+
+background-color:black;
 color:white;
-background-position: cover;
-background-size:100% auto;
+/* background-position: fixed; */
+background-size:100%;
 background-blend-mode: difference;
-background-repeat:no-repeat;
+/* background-repeat:no-repeat; */
 /* background-position: center; */
 background-attachment: fixed;
 `
@@ -159,7 +163,7 @@ const SectionContent = styled.div`
 display:flex;
 width:cover;
 word-break:keep-all;
-min-height: 200px;
+height:100%;
 margin-top:14px;
 margin-bottom:14px;
 margin-left:20px;
@@ -272,7 +276,16 @@ height:500px;
 `
 
 const MbtiFlowerImg = styled.div`
-width:100%;
+display:flex;
+
+
+
+margin-top:14px;
+margin-bottom:14px;
+margin-left:20px;
+margin-right:20px;
+padding-top:14px;
+padding-bottom: 14px;
 /* height:100%; */
 
 `

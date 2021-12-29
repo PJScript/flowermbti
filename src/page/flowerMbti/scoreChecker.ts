@@ -44,7 +44,7 @@ const scoreParser = (arr:Array<any>, box:number, alphabet:Array<string>) => {   
   box = 0;
   let alphabetQueue = []
   for(let i=0; i<=arr.length-1; i++){  
-    console.log(i)
+
       if(arr[i].answerIdx === 0){
         alphabetQueue.push(alphabet[0])
         box = box + 2
@@ -67,7 +67,7 @@ const alphabetParser = (alphabetArray:Array<string>, standardArray:Array<string>
 
   for(let i=0; i<=alphabetArray.length-1; i++){
     let callKey = alphabetArray[i]
-    console.log(i)
+
     if(callKey in testObj){
       testObj[callKey] = testObj[callKey] + 1
     }else{

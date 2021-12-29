@@ -10,7 +10,7 @@ const dummyContent = (mbti: string) => {
     원칙을 준수하며 틀에박힌 사고를 견딜 수 없습니다. 
     옛날부터 하던 관습 전통 질서 한계 등 혁신을 억압하는 것을 싫어합니다. 
     그래서 때론 무모할 수도 있는 아이디어를 독단적으로 실행합니다. 혼자 생각을 많이 하는 편이고 인간관계에 그리 큰 자신이 있지 않습니다.`,
-    img:'src/static/resultSmallImg/hyacinth.jpg',flowerName:'히아신스'}
+    img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/hyacinth-removebg-preview.png',flowerName:'히아신스',engName:'hyacinth'}
   } else if (mbti === 'INTP') {
     return {
       list: `자기애가 큼.
@@ -26,7 +26,7 @@ const dummyContent = (mbti: string) => {
     하루종일 몽상에 빠져있는 경우도 많고 늘 새로운 아이디어가 뿜어져 나옵니다. 다소 차가운 면이 있어서 타인의 감정을 가끔 이해하지 못합니다. 
     실패를 두려워 하고, 새로운 사실 혹은 진리를 본인이 만족하는 기준선 까지 이끌어내야 하는 집념이 있습니다. 
     지적 능력이 뛰어난 편이라 세상에 도움이 되거나 세상을 완전히 뒤바꿀 만한 혁신을 가지고올 성향입니다.`
-    ,img:'src/static/resultSmallImg/freesia.jpg',flowerName:'프리지아'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/freesia-removebg-preview.png',flowerName:'프리지아',engName:'freesia'}
   } else if (mbti === 'ENTJ') {
     return {
       list: `팀장이 못하면 답답해서 내가 팀장함.
@@ -38,7 +38,7 @@ const dummyContent = (mbti: string) => {
     카리스마가 넘치고 결단력이 있습니다. 사업가 혹은 특정 단체의 통솔자인 경우가 많습니다. 이들은 무언가에 ‘도전’  할때 가장 행복하고 재미를 느낍니다.
     항상 긍정적인 마인드를 가지고 있고 뭐든 할수 있다! 라는 생각을 기본 마인드로 가지고 삶을 살아갑니다. 이들은 또한 협상의 귀재 입니다.
     협상을 이기기 위함이 아닌 그저 즐기기 위해 하는 유형입니다.`
-    ,img:'src/static/resultSmallImg/poinsettia.jpg',flowerName:'포인세티아'
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/poinsettia-removebg-preview.png',flowerName:'포인세티아',engName:'poinsettia'
     }
   } else if (mbti === 'ENTP') {
     return {
@@ -52,7 +52,7 @@ const dummyContent = (mbti: string) => {
     재치 있는 입담과 재스처, 풍부한 지식으로 관객 혹은 논쟁을 하는 상대방 까지 재미있게 해주는 유형입니다. 
     늘 누군가와 토론하는 것을 즐기기 때문에 때론 불리한 자리에 서서 유리한 포지션에 있는 사람과 토론을 하기도 합니다. 이들은 어떤 토론이던 이기는게 우선입니다. 
     사람들을 잘 설득하고 상대방으로 하여금 그렇구나 라는 인정의 말을 들어야 직성이 풀리는 유형입니다.`
-    ,img:'src/static/resultSmallImg/clover.jpg',flowerName:'클로버'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/clover-removebg-preview.png',flowerName:'클로버',engName:'clover'}
   } else if (mbti === 'INFJ') {
     return {
       list: `생각이 너무 너무 많음.
@@ -69,7 +69,7 @@ const dummyContent = (mbti: string) => {
     또한 이들은 누군가를 도와주는 것에 큰 만족감을 느끼고 댓가 없이 누군가를 도와주는 것이 당연하다고 생각하는 유형입니다. 
     또한 이들은 사교성이 좋은 편이며 따듯하고 듣기좋은 언어로 인간 내면의 감정을 따듯하게 만드는 말투를 가졌습니다. 
     이들은 다른이들의 감정을 이해하고 분석하기를 좋아합니다.`
-    ,img:'src/static/resultSmallImg/parsley.jpg',flowerName:'파슬리'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/parsley-removebg-preview.png',flowerName:'파슬리',engName:'parsley'}
   } else if (mbti === 'INFP') {
     return {
       list: `생각이 많음.
@@ -84,7 +84,7 @@ const dummyContent = (mbti: string) => {
     또한 원리 원칙에 입각하여 살아가는 유형이고 이익에 상관없이 그 자체의 아름다움, 명예, 양심, 원칙 을 최 우선으로 삼아 살아갑니다. 
     이들은 시인 처럼 은유적인 표현과 이야기를 즐겨합니다. 
     자신의 감정을 은유적으로 표현하는 것을 즐겨하고 대규모 단체보다는 소규모 단체에서 주로 활동합니다.`
-    ,img:'src/static/resultSmallImg/Iris.jpg',flowerName:'아이리스'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/Iris-removebg-preview.png',flowerName:'아이리스',engName:'Iris'}
   } else if (mbti === 'ENFJ') {
     return {
       list: `시끄러움.
@@ -97,7 +97,7 @@ const dummyContent = (mbti: string) => {
     나의 말을 상대방이 들을 수 밖에 없도록 만들어버리고 상대방 또한 이런 상황을 즐기게 만듭니다. 
     무언가 설명하고 가르칠 때 희열을 느끼고 큰 만족감을 느낍니다. 이들은 사람을 만나는 것을 좋아합니다. 
     타인에게 관심이 많아 사교성이 좋지만 때론 과한 관심에 상대방이 불쾌함을 느낄 수가 있습니다. `
-    ,img:'src/static/resultSmallImg/peony.png',flowerName:'작약'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/tulip.jpg',flowerName:'작약',engName:'peony'}
   } else if (mbti === 'ENFP') {
     return {
       list: `고집이 셈.
@@ -112,7 +112,7 @@ const dummyContent = (mbti: string) => {
     참가하는 모임이 과할정도로 많고 혼자 있는 시간보다 함께 있는 시간이 압도적으로 많습니다. 
     가끔 혼자있는 날이면 괜스레 우울해지거나 힘이 하나도 없는 모습을 보입니다. 
     이는 밖에서 사람과 이야기를 나누고 즐기다보면 금방 회복됩니다.`
-    ,img:'src/static/resultSmallImg/cosmos.jpg',flowerName:'코스모스'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/cosmos-removebg-preview.png',flowerName:'코스모스',engName:'cosmos'}
   } else if (mbti === 'ISTJ') {
     return {
       list: `원칙 주의자. 
@@ -126,7 +126,7 @@ const dummyContent = (mbti: string) => {
     예를 들면 이 법은 올바른 법인가 탐구하는 상황을 들 수 있습니다. 이들은 전통, 질서를 중시하는 특정한 조직에서 일하는 것을 선호합니다. 
     또한 그 조직에서 일하는 것에 큰 자부심을 가지고 있습니다. 매사에 신중하고 확실합니다. 내뱉은 말은 무조건 책임을 져야한다는 생각을 가지고 있습니다. 
     이들은 타인의 부탁을 대부분 거절하지 않습니다. 때문에 자신의 일을 제 시간에 해결하지 못하는 경우도 많아 남보단 내가 먼저다 라는 생각이 필요해보입니다.`
-    ,img:'src/static/resultSmallImg/camellia.png',flowerName:'카멜리아'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/tulip.jpg',flowerName:'카멜리아',engName:'camellia'}
   } else if (mbti === 'ISFJ') {
     return {
       list: `원칙주의자.남 눈치를 안봄.타인을 잘 도와줌.게으름.단체활동 별로 안좋아함.혼자 하는걸 좋아함.막상 하면 잘함.칭찬 많이해줌.
@@ -137,7 +137,7 @@ const dummyContent = (mbti: string) => {
     인간 관계에 뛰어나 주변에 사람이 많지만 때론 내성적으로 인간관계에 큰 강점을 보이지 못할 때도 있습니다. 
     때론 완벽주의자 만큼 세심하고 꼼꼼하지만 때론 그렇지 않습니다. 이들은 자신이 이루어낸 사건이나 공을 남에게 잘 표출하지 않습니다. 
     내성적이면서도 인간관계에 강점을 가진 특이한 성격으로 많은 유형들이 섞여있어 뭐든 절반은 가는 육각형 모양의 유형입니다.`
-    ,img:'src/static/resultSmallImg/tulip.jpg',flowerName:'튤립'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/tulip-removebg-preview.png',flowerName:'튤립',engName:'tulip'}
   } else if (mbti === 'ESTJ') {
     return {
       list: `고집이 세다.
@@ -151,7 +151,7 @@ const dummyContent = (mbti: string) => {
     사람들을 결집 시키는데에도 일가견이 있어 사회적인 행사나, 시위, 사회운동 등 사람들을 모으는 데에 소질을 보이기도 합니다. 
     자신이 옳다고 판단한 일이라면 소신을 굽히지 않고 끝까지 밀고나가는 유형입니다. 하지만 자신의 판단이 틀렸다고 생각한다면 그 즉시 인정하고 사과를 하는 진정한 리더 입니다. 
     하지만 모든 사람이 자신과 같을 거라는 생각은 버리는 편이 좋아보입니다.`
-    ,img:'src/static/resultSmallImg/royalAzalea.jpg',flowerName:'철쭉'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/royalAzalea-removebg-preview.png',flowerName:'철쭉',engName:'royalAzalea'}
   } else if (mbti === 'ESFJ') {
     return {
       list: `술자리를 좋아함.
@@ -164,7 +164,7 @@ const dummyContent = (mbti: string) => {
     주로 패션, 외모, 가십거리에 관심이 많고 다소 딱딱한 주제인 정치, 과학에는 별관심이 없습니다. 
     이들은 처음보는 사람들과도 금방 친해지는 강점이 있고 계획적으로 무언가 하기보단 즉흥적으로 기분에 따라 실행하는 것을 즐깁니다. 
     이들은 사람을 너무 좋아한 나머지 사람에게 상처도 쉽게 받습니다.`
-    ,img:'src/static/resultSmallImg/cyclamen.jpg',flowerName:'시클라멘'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/cyclamen-removebg-preview.png',flowerName:'시클라멘',engName:'cyclamen'}
   } else if (mbti === 'ISTP') {
     return {
       list: `무미건조함.
@@ -180,7 +180,7 @@ const dummyContent = (mbti: string) => {
     하지만 때론 즉흥적이며 일탈을 즐기기도 하고 이쪽으로 갈지 저쪽으로 갈지 알 수 없는 유형입니다. 
     이들은 한참을 참다가 갑자기 에너지가 폭발 하는 경우가 많습니다. 이로인해 추구하던 방향과는 정반대 방향으로 가는 경우가 있습니다. 
     이들은 때론 너무 신중해서 쓸대없는 손해를 보는 경우도 있습니다.`
-    ,img:'src/static/resultSmallImg/daffodil.png',flowerName:'수선화'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/daffodil-removebg-preview.png',flowerName:'수선화',engName:'daffodil'}
   } else if (mbti === 'ISFP') {
     return {
       list: `느릿느릿함.
@@ -195,7 +195,7 @@ const dummyContent = (mbti: string) => {
     다소 즉흥적인 성격을 가지고 있어서 어디로 튈지 가까운 사람들도 잘 모르는 유형입니다. 열정이 넘치고 익스트림 스포츠를 즐기는 경향이 있습니다. 
     이들은 내향적이지만 다른이들과 어울리는 것을 좋아하기도 합니다. 이들 특유의 매력이 넘치기 때문입니다. 
     길을 걷다 보이는 돌맹이 하나에도 진심을 다해 감정을 느끼는 감각적인 유형입니다.`
-    ,img:'src/static/resultSmallImg/hydrangea.jpg',flowerName:'수국'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/hydrangea-removebg-preview.png',flowerName:'수국',engName:'hydrangea'}
   } else if (mbti === 'ESTP') {
     return {
       list: `외로움을 많이탄다.
@@ -211,7 +211,7 @@ const dummyContent = (mbti: string) => {
     이들은 충동적인 성향이있어 틀에박힌 조직에서는 살아남기 힘들어 보입니다. 
     충동적인 성향이 그 순간에는 이득이 될 수 있지만 장기적으로 보면 그렇지 않은 경우도 있기 때문입니다. 
     이들은 타인을 위한 배려심 또한 충분합니다. `
-    ,img:'src/static/resultSmallImg/cherryBlossom.jpg',flowerName:'벚꽃'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/cherryBlossom-removebg-preview.png',flowerName:'벚꽃',engName:'cherryBlossom'}
   } else if (mbti === 'ESFP') {
     return {
       list: `성격이 매우급함.
@@ -226,7 +226,14 @@ const dummyContent = (mbti: string) => {
     이들은 종종 너무 즉흥적인 즐거움에 취해 현실적인 면은 보지못합니다. 또한 이들은 자신의 능력이 어느정도인지 정확히 알고 있습니다. 
     하지만 계획을 세우지 못하고 절제하지못해 씀씀이가 점점 커는 경우도 있습니다. 
     이들은 타인과 어울리는 자리라면 어떤 모임에서든 불러주는 환영받는 사람입니다.`
-    ,img:'src/static/resultSmallImg/peachBlossom.jpg',flowerName:'복숭아꽃'}
+    ,img:'https://onlyimagebucketserver.s3.ap-northeast-2.amazonaws.com/peachBlossom-removebg-preview.png',flowerName:'복숭아꽃',engName:'peachBlossom'}
+  } else {
+    return{
+      list:``,
+      normal:``,
+      img:``,
+      flowerName:``
+    }
   }
 }
 
