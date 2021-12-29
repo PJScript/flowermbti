@@ -31,6 +31,7 @@ const Result = () => {
   const [mbtiContent, setMbti]  = useState<any>('')
   const [mbtiFlowerUrl, setMbtiFlowerUrl] = useState<string>('')
   const [mbtiFlowerName, setMbtiFlowerName] = useState<string>('')
+  const [mbtiFlowerNickName, setMbtiFlowerNickName] = useState<string>('')
   const testFnc = (e:any) => {
     console.log(e)
     console.log(test)
@@ -53,6 +54,7 @@ const Result = () => {
     setMbti(resultMbti)
     setMbtiFlowerUrl(resultMbti.img)
     setMbtiFlowerName(resultMbti.flowerName)
+    setMbtiFlowerNickName(resultMbti.nickName)
     window.addEventListener("scroll",(e)=>{
       if(get_scroll_percentage() >= 30){
         setShowRouteBox(true)
@@ -81,8 +83,8 @@ const Result = () => {
           <h2>결과</h2>
         <Section_wrapper>
           <SectionTitle>
-            <div style={{ color: '#EAEAEA', fontWeight: 'bold' }}>홍길동 <span> 님은</span></div>
-            <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>{mbtiFlowerName}</span> 가(이) 되었어요!</div>
+          <div style={{ color: '#EAEAEA', fontWeight: 'bold' }}>{mbtiFlowerNickName}<span></span></div>
+            <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>{mbtiFlowerName}</span></div>
           </SectionTitle>
           <SectionBody>
             <MbtiFlowerImg>
