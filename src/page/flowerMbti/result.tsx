@@ -1,15 +1,8 @@
-import React from "react";
+import React,{useCallback}from "react";
 import { GlobalBody,FlowerRootdiv, CommonDiv } from "../../style/global-style";
-import styled from "styled-components";
+import styled,{css, keyframes}from "styled-components";
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/flower-3490152_640.jpg'
-import { dummy } from "../../dummy";
-import result1 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/roses-56702_1920.jpg'
-import result2 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/leaf-g6e755a8b7_1920-removebg.png'
-import result3 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/poppy-192784.jpg'
-import result4 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/cherry-blossoms-4074651_1920.jpg'
-
 import { get_scroll_percentage } from "../../component/scrollPerMaker";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +11,11 @@ import ShareBoxFooter from "../../component/flowerMbti/shareBoxFooter";
 import { scoreChecker } from "./scoreChecker";
 import dummyContent from "../../component/flowerMbti/dummyContent";
 import { removeAnswer } from "../../redux/action";
-import test from "/home/js/Desktop/flowermbti/src/static/resultSmallImg/royalAzalea.jpg"
+
+import {getRandom}  from "../../component/flowerMbti/getRandom";
+import result2 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/leaf-g6e755a8b7_1920-removebg.png'
+import FallingFlower from "../../component/flowerMbti/fallingFlower";
+
 
 const Result = () => {
   const dispatch = useDispatch()
@@ -32,6 +29,8 @@ const Result = () => {
   const [mbtiFlowerUrl, setMbtiFlowerUrl] = useState<string>('')
   const [mbtiFlowerName, setMbtiFlowerName] = useState<string>('')
   const [mbtiFlowerNickName, setMbtiFlowerNickName] = useState<string>('')
+  
+
   const testFnc = (e:any) => {
     console.log(e)
     console.log(test)
@@ -41,6 +40,10 @@ const Result = () => {
     alert('아직 오픈 전이에요!')
     // navigate('/project/1/flowers')
   }
+  
+ 
+
+
 
   const clickReplayBtn = () => {
     navigate('/')
@@ -75,22 +78,28 @@ const Result = () => {
   useEffect(()=>{
     console.log(mbtiFlowerUrl,"꽃 주소")
   },[mbtiFlowerUrl])
+
+
   return (
     <>
-      <GlobalBody />
-      <Sample>
-          Result Page
-          <h2>결과</h2>
+
+      <GlobalBody />    
+
+      <Sample>    
+        <FallingFlower></FallingFlower>
+        Result Page
+        <h2>결과</h2>
         <Section_wrapper>
           <SectionTitle>
-          <div style={{ color: '#EAEAEA', fontWeight: 'bold' }}>{mbtiFlowerNickName}<span></span></div>
-            <div><span style={{ color: '#FFA556', fontWeight: 'bold' }}>{mbtiFlowerName}</span></div>
+
+            <SectionTitleNickName>{mbtiFlowerNickName}</SectionTitleNickName>
+            <SectionTitleName>{mbtiFlowerName}</SectionTitleName>
           </SectionTitle>
           <SectionBody>
+            
             <MbtiFlowerImg>
-              <img width='100%' src={mbtiFlowerUrl}></img>
+              <img width='80%' src={mbtiFlowerUrl}></img>
             </MbtiFlowerImg>
-
             <SectionContent>{mbtiContent.list}</SectionContent>
             <SectionContent>{mbtiContent.normal}</SectionContent>
           </SectionBody>
@@ -113,7 +122,7 @@ const Result = () => {
             <p style={{color:'black',fontWeight:'bold'}}>문의 사항과 피드백 환영 합니다.</p>
             <div>직접 이메일로 보내시거나 </div>
             <div>아래 버튼을 통해 보내주세요 !</div>
-            <p><button>문의하기</button></p>
+            <p><button onClick={()=>alert('준비중입니다. 트위터 혹은 이메일로 직접 문의해주세요!')}>문의하기</button></p>
             <div>이메일 : webtestlife@gmail.com</div>
             <span>트위터 : <a target='_blank' href='https://twitter.com/testweblife'>https://twitter.com/testweblife</a> </span>
           </InfoBox>
@@ -121,18 +130,21 @@ const Result = () => {
 
           </Section_wrapper>
       </Sample>
+
     </>
   )
 }
 
+
 const Sample = styled.div`
+
 width:100%;
 height:100%;
+overflow:hidden;
 background-color : #070604;
 display:flex;
 flex-direction: column;
 align-items: center;
-
 background-color:black;
 color:white;
 /* background-position: fixed; */
@@ -146,17 +158,27 @@ background-attachment: fixed;
 
 const SectionTitle = styled.section`
 display:flex;
+
 flex-direction:column;
 align-items: center;
 font-size:1.2em;
 /* mix-blend-mode: difference; */
 background-color:grey;
+border-radius: 5px;
+`
+
+const SectionTitleNickName = styled.div`
+font-weight:normal;
+`
+const SectionTitleName = styled.div`
+  font-weight:bold;
+  color:orange;
 `
 
 const SectionBody = styled.section`
 border-radius: 5px;
 width:100%;
-background-color:rgba(238, 202, 155, 0.8);
+background-color:rgba(238, 202, 155);
 
 /* height:100vh; */
 /* overflow-y: scroll; */
@@ -175,6 +197,7 @@ padding-bottom: 14px;
 
 `
 const Section_wrapper = styled.div`
+z-index:1;
 padding-left: 20px;
 padding-right:20px;
 width:370px;
@@ -279,9 +302,7 @@ height:500px;
 
 const MbtiFlowerImg = styled.div`
 display:flex;
-
-
-
+justify-content:center;
 margin-top:14px;
 margin-bottom:14px;
 margin-left:20px;
@@ -289,6 +310,10 @@ margin-right:20px;
 padding-top:14px;
 padding-bottom: 14px;
 /* height:100%; */
-
 `
+
+
+
+
+
 export default Result;
