@@ -10,13 +10,13 @@ const ShareBoxFooter = ():JSX.Element => {
       <div>친구에게 공유해 보세요!</div>
       <ShareBtnBox>
         <ShareBtnKakao className="hover">
-          <div>Kakao</div>
+          <div onClick={()=>alert('준비중입니다.')}>Kakao</div>
         </ShareBtnKakao>
         <ShareBtnFaceBook className="hover">
-          <div>faceBook</div>
+          <div onClick={()=>alert('준비중입니다.')}>faceBook</div>
         </ShareBtnFaceBook>
         <ShareBtnInstaGram className="hover">
-          <div>InstaGram</div>
+          <div onClick={()=>alert('준비중입니다.')}>InstaGram</div>
         </ShareBtnInstaGram>
       </ShareBtnBox>
     </SectionFooterContent>
