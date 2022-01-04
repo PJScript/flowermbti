@@ -5,15 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import { myTheme } from '../../style/theme';
 import { useDispatch } from 'react-redux';
 import { removeAnswer } from '../../redux/action';
+import { useEffect } from 'react';
 
 const FlowerHome = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
+
   const clickStartBtn = () => {
     navigate('/project/1/question')
-
   }
-  dispatch(removeAnswer())
+  useEffect(()=>{
+    dispatch(removeAnswer())
+  },[])
+
   return (
     <>
       <GlobalBody />
@@ -27,7 +31,7 @@ const FlowerHome = (): JSX.Element => {
                   </svg>
                   당신은
                   <div>
-                    <span style={{ color: "rgb(109, 90, 90)" }}>꽃</span>
+                    <span style={{ color: "orange" }}>꽃</span>
                     인가요?
                   </div>
                   <SubTitleBox>

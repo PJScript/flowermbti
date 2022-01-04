@@ -15,20 +15,22 @@ import { removeAnswer } from "../../redux/action";
 import {getRandom}  from "../../component/flowerMbti/getRandom";
 import result2 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/leaf-g6e755a8b7_1920-removebg.png'
 import FallingFlower from "../../component/flowerMbti/fallingFlower";
-
-
+import CustomAlert from "../../component/flowerMbti/customAlert";
+import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
 const Result = () => {
   const dispatch = useDispatch()
   let answerList = useSelector((state:RootState) => state.answerReducer);
-  let mbtiContentList = useSelector((state:RootState) => state.mbtiContentReducer);
+
   const navigate = useNavigate();
   const [showRouteBox, setShowRouteBox] = useState<boolean>(true)
   const [showSectionFooter, setShowSectionFooter] = useState<boolean>(false)
   const [showInfoBox, setShowInfoBox] = useState<boolean>(false)
   const [mbtiContent, setMbti]  = useState<any>('')
+  const [mbtiSubTitle, setMbtiSubTitle] = useState<any[]>(['test','test1'])
   const [mbtiFlowerUrl, setMbtiFlowerUrl] = useState<string>('')
   const [mbtiFlowerName, setMbtiFlowerName] = useState<string>('')
   const [mbtiFlowerNickName, setMbtiFlowerNickName] = useState<string>('')
+  const [alertState, setAlertState] = useState<any>('false')
   
 
   const testFnc = (e:any) => {
@@ -37,7 +39,8 @@ const Result = () => {
     e.target.setAttribute('src',result2)
   }
   const clickFlowersBtn = () => {
-    alert('아직 오픈 전이에요!')
+    
+    setAlertState(true)
     // navigate('/project/1/flowers')
   }
   
@@ -46,11 +49,12 @@ const Result = () => {
 
 
   const clickReplayBtn = () => {
-    navigate('/')
     dispatch(removeAnswer())
+    navigate('/')
+
   }
   useEffect(()=>{
-    // dummyContent(answerList)
+
     let mbti = scoreChecker(answerList)
     mbti = mbti.replaceAll(",","")
     let resultMbti = dummyContent(mbti)
@@ -58,6 +62,7 @@ const Result = () => {
     setMbtiFlowerUrl(resultMbti.img)
     setMbtiFlowerName(resultMbti.flowerName)
     setMbtiFlowerNickName(resultMbti.nickName)
+    
     window.addEventListener("scroll",(e)=>{
       if(get_scroll_percentage() >= 30){
         setShowRouteBox(true)
@@ -67,22 +72,32 @@ const Result = () => {
       }
       if(get_scroll_percentage() >= 75){
         setShowInfoBox(true)
+        window.removeEventListener("scroll",(e)=>{
+          console.log(e)
+        })
       }
       // console.log(window.innerHeight,"브라우저 높이")
       // console.log(document.documentElement.scrollHeight,"전체문서 높이")
       // console.log(window.scrollY,"스크롤한 높이")
     });
-
+    
   },[])
 
   useEffect(()=>{
-    console.log(mbtiFlowerUrl,"꽃 주소")
+    if(!mbtiContent){
+
+    }else{
+      setMbtiSubTitle(mbtiContent.list.split('.'))
+    }
+
   },[mbtiFlowerUrl])
+  // console.log(mbtiContentList)
+  // console.log(mbtiContent.list.split('.'))
 
 
   return (
     <>
-
+      
       <GlobalBody />    
 
       <Sample>    
@@ -91,16 +106,25 @@ const Result = () => {
         <h2>결과</h2>
         <Section_wrapper>
           <SectionTitle>
-
             <SectionTitleNickName>{mbtiFlowerNickName}</SectionTitleNickName>
             <SectionTitleName>{mbtiFlowerName}</SectionTitleName>
           </SectionTitle>
+          {/* <CustomAlert visible={alertState} backEvent={true} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert> */}
           <SectionBody>
-            
             <MbtiFlowerImg>
               <img width='80%' src={mbtiFlowerUrl}></img>
             </MbtiFlowerImg>
-            <SectionContent>{mbtiContent.list}</SectionContent>
+            <SectionListContentUl>
+              {mbtiSubTitle.map((item)=>{
+                if(item === '' || item === undefined){
+                  
+                }else{
+                  return <SectionListContentLi>{item}</SectionListContentLi>
+                }
+
+              })}
+
+            </SectionListContentUl>
             <SectionContent>{mbtiContent.normal}</SectionContent>
           </SectionBody>
           {showRouteBox ?
@@ -122,7 +146,8 @@ const Result = () => {
             <p style={{color:'black',fontWeight:'bold'}}>문의 사항과 피드백 환영 합니다.</p>
             <div>직접 이메일로 보내시거나 </div>
             <div>아래 버튼을 통해 보내주세요 !</div>
-            <p><button onClick={()=>alert('준비중입니다. 트위터 혹은 이메일로 직접 문의해주세요!')}>문의하기</button></p>
+
+            <p><button onClick={()=> setAlertState(true)}>문의하기</button></p>
             <div>이메일 : webtestlife@gmail.com</div>
             <span>트위터 : <a target='_blank' href='https://twitter.com/testweblife'>https://twitter.com/testweblife</a> </span>
           </InfoBox>
@@ -137,22 +162,23 @@ const Result = () => {
 
 
 const Sample = styled.div`
-
+background-image: url(${flowerMbtiDefaultBackImg});
 width:100%;
 height:100%;
 overflow:hidden;
-background-color : #070604;
+/* background-color : #070604; */
 display:flex;
 flex-direction: column;
 align-items: center;
-background-color:black;
+/* background-color:whitesmoke;  */
 color:white;
 /* background-position: fixed; */
-background-size:100%;
-background-blend-mode: difference;
+background-size:auto;
+/* background-blend-mode: difference; */
 /* background-repeat:no-repeat; */
 /* background-position: center; */
 background-attachment: fixed;
+
 `
 
 
@@ -194,7 +220,14 @@ margin-left:20px;
 margin-right:20px;
 padding-top:14px;
 padding-bottom: 14px;
+`
 
+const SectionListContentUl = styled.ul`
+  
+`
+
+const SectionListContentLi = styled.li`
+  
 `
 const Section_wrapper = styled.div`
 z-index:1;

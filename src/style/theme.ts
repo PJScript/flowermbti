@@ -22,6 +22,7 @@ const myTheme: DefaultTheme = {
     blue: 'blue',
     green: 'green'
   },
+
 };
 
 export { myTheme };
