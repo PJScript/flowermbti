@@ -1,7 +1,7 @@
 import React,{useCallback}from "react";
 import styled from "styled-components";
-import cherryBlosoomIcon from "/home/js/Desktop/flowermbti/src/images/fallingflowerIcon/cherry-blossom.png"
-import jasmineIcon from "/home/js/Desktop/flowermbti/src/images/fallingflowerIcon/jasmine.png"
+import cherryBlosoomIcon from "/home/js/Desktop/flowermbti/src/images/fallingflowerIcon/cherryBlossomIcon.png"
+import jasmineIcon from "/home/js/Desktop/flowermbti/src/images/fallingflowerIcon/jasmineIcon.png"
 import { getRandom } from "./getRandom";
 
 
@@ -53,6 +53,7 @@ const FallingFlower = () => {
 }
 export default FallingFlower
 const FlowerIcon = styled.img`
+  /* position:relative; */
   visibility:hidden;
   z-index:-1;
   width:20px;
@@ -60,7 +61,7 @@ const FlowerIcon = styled.img`
   animation:fallingR 2s linear infinite;
   @keyframes fallingR{
     0% {
-      visibility:visible;
+    visibility:visible;
     opacity:0;
     transform: translateY(0vh)
   }

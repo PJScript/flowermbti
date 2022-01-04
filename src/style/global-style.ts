@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/flower-3490152_640.jpg'
+import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
 export const FlowerRootdiv = styled.div`
   display:flex;
   flex-direction: column;
@@ -8,7 +8,7 @@ export const FlowerRootdiv = styled.div`
   align-items: center;
   background-color : #070604;
   /* overflow-y: hidden; */
-  color:white;
+  color:black;
   opacity:0.95;
   background-image : url(${flowerMbtiDefaultBackImg});
   background-size:auto;
