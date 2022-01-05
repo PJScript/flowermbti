@@ -17,6 +17,9 @@ import result2 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/leaf-g6e7
 import FallingFlower from "../../component/flowerMbti/fallingFlower";
 import CustomAlert from "../../component/flowerMbti/customAlert";
 import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
+import 'dotenv/config'
+import { Helmet } from "react-helmet";
+
 const Result = () => {
   const dispatch = useDispatch()
   let answerList = useSelector((state:RootState) => state.answerReducer);
@@ -99,7 +102,6 @@ const Result = () => {
     <>
       
       <GlobalBody />    
-
       <Sample>    
         <FallingFlower></FallingFlower>
         Result Page
