@@ -1,23 +1,19 @@
 import React from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
+import { kakaoShareBtn } from "./kakaoShareBtn";
+import kakao from '/home/js/Desktop/flowermbti/src/static/shareIcon/kakaolink_btn_medium_ov.png'
 const ShareBoxFooter = ():JSX.Element => {
 
+  console.log(window.Kakao.isInitialized(),"check KAKAO")
   return(
     <>
     <SectionFooter>
-    <h3>공유</h3>
-    <SectionFooterContent>
-      <div>친구에게 공유해 보세요!</div>
-      <ShareBtnBox>
-        <ShareBtnKakao className="hover">
-          <div onClick={()=>alert('준비중입니다.')}>Kakao</div>
-        </ShareBtnKakao>
-        <ShareBtnFaceBook className="hover">
-          <div onClick={()=>alert('준비중입니다.')}>faceBook</div>
-        </ShareBtnFaceBook>
-        <ShareBtnInstaGram className="hover">
-          <div onClick={()=>alert('준비중입니다.')}>InstaGram</div>
-        </ShareBtnInstaGram>
+        <h3>공유</h3>
+        <SectionFooterContent>
+          <div>친구에게 공유해 보세요!</div>
+          <ShareBtnBox>
+            <ShareBtnKakao className='hover' onClick={() => kakaoShareBtn('test',1)} src={kakao}></ShareBtnKakao>
       </ShareBtnBox>
     </SectionFooterContent>
   </SectionFooter>
@@ -68,8 +64,6 @@ padding:4px;
 
 const ShareBtnBox = styled.ul`
 display:flex;
-flex-direction:column;
-text-align: center;
 padding:0px;
 list-style-type: none;
 
@@ -77,11 +71,8 @@ list-style-type: none;
 
 `
 
-const ShareBtnKakao = styled.li`
-color:black;
-font-weight:bold;
-background-color:yellow;
-margin-bottom:10px;
+const ShareBtnKakao = styled.img`
+
 `
 
 const ShareBtnFaceBook = styled.li`
