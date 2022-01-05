@@ -109,7 +109,7 @@ const Result = () => {
             <SectionTitleNickName>{mbtiFlowerNickName}</SectionTitleNickName>
             <SectionTitleName>{mbtiFlowerName}</SectionTitleName>
           </SectionTitle>
-          {/* <CustomAlert visible={alertState} backEvent={true} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert> */}
+          <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>
           <SectionBody>
             <MbtiFlowerImg>
               <img width='80%' src={mbtiFlowerUrl}></img>
@@ -171,7 +171,8 @@ display:flex;
 flex-direction: column;
 align-items: center;
 /* background-color:whitesmoke;  */
-color:white;
+color:black;
+font-weight: bold;
 /* background-position: fixed; */
 background-size:auto;
 /* background-blend-mode: difference; */
