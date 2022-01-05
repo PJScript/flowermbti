@@ -3,6 +3,7 @@ import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flo
 export const FlowerRootdiv = styled.div`
   display:flex;
   flex-direction: column;
+  justify-content: space-around;
   height : 100vh;
   width : 100%;
   align-items: center;
@@ -15,9 +16,6 @@ export const FlowerRootdiv = styled.div`
   background-repeat : no-repeat;
   background-position : bottom;
   background-attachment: fixed;
-  @media screen and (max-height:593px) { 
-    background-position-y:7px;
-  }
 `
 
 export const CommonDiv = styled.div`
