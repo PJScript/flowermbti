@@ -143,12 +143,13 @@ const AnswerBox_item = styled.li`
   display:flex;
   align-items: center;
   justify-content: center;
-  color:white;
+  color:black;
   width:100%;
   height:50px;
-  background-color:grey;
-  border:1px solid red;
+  background-color:#FDF4EA;
+  border-radius: 6px;
   margin-bottom:15px;
+  border:1px solid black;
   &:hover{
     cursor:pointer;
     background-color:rgb(255, 165, 86);
