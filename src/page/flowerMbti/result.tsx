@@ -3,17 +3,17 @@ import { GlobalBody,FlowerRootdiv, CommonDiv } from "../../style/global-style";
 import styled,{css, keyframes}from "styled-components";
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import { get_scroll_percentage } from "../../component/scrollPerMaker";
+import { get_scroll_percentage } from "../../utils/scrollPerMaker";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux";
 import ShareBoxFooter from "../../component/flowerMbti/shareBoxFooter";
-import { scoreChecker } from "./scoreChecker";
+import { scoreChecker } from "../../utils/scoreChecker";
 import dummyContent from "../../component/flowerMbti/dummyContent";
 import { removeAnswer } from "../../redux/action";
 
-import {getRandom}  from "../../component/flowerMbti/getRandom";
-import result2 from '/home/js/Desktop/flowermbti/src/images/flowerMbti/leaf-g6e755a8b7_1920-removebg.png'
+import getRandom  from "../../utils/getRandom";
+
 import FallingFlower from "../../component/flowerMbti/fallingFlower";
 import CustomAlert from "../../component/flowerMbti/customAlert";
 import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
@@ -36,11 +36,7 @@ const Result = () => {
   const [alertState, setAlertState] = useState<any>('false')
   
 
-  const testFnc = (e:any) => {
-    console.log(e)
-    console.log(test)
-    e.target.setAttribute('src',result2)
-  }
+
   const clickFlowersBtn = () => {
     
     setAlertState(true)

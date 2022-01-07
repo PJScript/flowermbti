@@ -1,6 +1,6 @@
 import { Routes,Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useScript } from './component/flowerMbti/hooks';
+import { useScript } from './utils/hooks';
 import styled, { ThemeProvider } from 'styled-components'
 import { GlobalBody, FlowerRootdiv } from './style/global-style'; 
 import FlowerHome from './page/flowerMbti/flowerHome';

@@ -2,7 +2,7 @@ import React,{useCallback}from "react";
 import styled from "styled-components";
 import cherryBlosoomIcon from "/home/js/Desktop/flowermbti/src/images/fallingflowerIcon/cherryBlossomIcon.png"
 import jasmineIcon from "/home/js/Desktop/flowermbti/src/images/fallingflowerIcon/jasmineIcon.png"
-import { getRandom } from "./getRandom";
+import getRandom from "../../utils/getRandom";
 
 
 
