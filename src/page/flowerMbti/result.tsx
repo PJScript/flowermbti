@@ -138,7 +138,7 @@ const Result = () => {
             <InvisibleRouteBtnBox></InvisibleRouteBtnBox>
           }
           {showSectionFooter ?
-          <ShareBoxFooter></ShareBoxFooter>
+          <ShareBoxFooter mbtiFlowerUrl={mbtiFlowerUrl} mbtiContent={mbtiContent}></ShareBoxFooter>
           : 
           <InvisibleSectionFooter></InvisibleSectionFooter>}
           {showInfoBox ?           
