@@ -14,22 +14,26 @@ dotenv.config()
 
 
 const App = (): JSX.Element => {
-  const [minutes, setMinutes] = useState<number>(2);
-  const [seconds, setSeconds] = useState<number>(59);
 
-
-  const status = useScript("https://developers.kakao.com/sdk/js/kakao.js");
+  const kakaoStatus = useScript("https://developers.kakao.com/sdk/js/kakao.js");
+  const faceBookStatus = useScript("https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v12.0");
 	// kakao sdk 초기화
 	// status가 변경될 때마다 실행, status가 ready일 때 초기화
 	useEffect(() => {
-		if (status === "ready" && window.Kakao) {
+		if (kakaoStatus === "ready" && window.Kakao) {
 			// 중복 init 방지
 			if (!window.Kakao.isInitialized()) {
 				// init 되어있지 않다면 init.
 				window.Kakao.init(process.env.REACT_APP_KAKAOAPIKEY);
 			}
 		}
-	}, [status]);	
+
+    // if(faceBookStatus === "ready"){
+      
+    // }else{
+    //   alert('관리자 에게 문의 하세요.')
+    // }
+	}, [kakaoStatus]);	
   return (
     <>
     <GlobalBody />

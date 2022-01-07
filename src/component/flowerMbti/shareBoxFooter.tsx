@@ -1,22 +1,26 @@
 import React from "react";
 import { useEffect } from "react";
 import styled from "styled-components";
-import { kakaoShareBtn } from "./kakaoShareBtn";
+import { faceBookShareBtn } from "./shareBtn/faceBookShareBtn";
+import { kakaoShareBtn } from "./shareBtn/kakaoShareBtn";
 import kakao from '/home/js/Desktop/flowermbti/src/static/shareIcon/kakaolink_btn_medium_ov.png'
-const ShareBoxFooter = ():JSX.Element => {
+import faceBook from '/home/js/Desktop/flowermbti/src/static/shareIcon/facebook.png'
+const ShareBoxFooter = ({mbtiFlowerUrl,mbtiContent}:any):JSX.Element => {
 
   console.log(window.Kakao.isInitialized(),"check KAKAO")
-  return(
+  console.log(mbtiFlowerUrl,"url 제대로 왔나.")
+  return (
     <>
-    <SectionFooter>
+      <SectionFooter>
         <h3>공유</h3>
         <SectionFooterContent>
           <div>친구에게 공유해 보세요!</div>
           <ShareBtnBox>
-            <ShareBtnKakao className='hover' onClick={() => kakaoShareBtn('test',1)} src={kakao}></ShareBtnKakao>
-      </ShareBtnBox>
-    </SectionFooterContent>
-  </SectionFooter>
+            <ShareBtnKakao className='hover' onClick={() => kakaoShareBtn('test', 1, mbtiFlowerUrl, mbtiContent)} src={kakao}></ShareBtnKakao>
+            <ShareBtnFaceBook className='hover' onClick={() => faceBookShareBtn() }></ShareBtnFaceBook>
+          </ShareBtnBox>
+        </SectionFooterContent>
+      </SectionFooter>
   </>
   )
 }
@@ -66,21 +70,26 @@ const ShareBtnBox = styled.ul`
 display:flex;
 padding:0px;
 list-style-type: none;
+justify-content: space-around;
 
 /* border:1px solid grey; */
 
 `
 
 const ShareBtnKakao = styled.img`
-
+background-color: whitesmoke;
+width:50px;
+height:50px;
 `
 
-const ShareBtnFaceBook = styled.li`
-color:whitesmoke;
-font-weight:bold;
-background-color: blue;
-margin-bottom:10px;
+const ShareBtnFaceBook = styled.img`
+background-color: whitesmoke;
+width:50px;
+height:50px;
 `
+ShareBtnFaceBook.defaultProps = {
+  src: faceBook
+}
 
 const ShareBtnInstaGram = styled.li`
 color:black;
