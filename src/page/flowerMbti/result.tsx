@@ -19,6 +19,7 @@ import CustomAlert from "../../component/flowerMbti/customAlert";
 import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
 import 'dotenv/config'
 import { Helmet } from "react-helmet";
+import InfoBoxComponent from "../../component/flowerMbti/infoBoxComponent";
 
 const Result = () => {
   const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const Result = () => {
   const [mbtiFlowerUrl, setMbtiFlowerUrl] = useState<string>('')
   const [mbtiFlowerName, setMbtiFlowerName] = useState<string>('')
   const [mbtiFlowerNickName, setMbtiFlowerNickName] = useState<string>('')
-  const [alertState, setAlertState] = useState<any>('false')
+  const [alertState, setAlertState] = useState<boolean>(false)
   
 
 
@@ -50,7 +51,6 @@ const Result = () => {
   const clickReplayBtn = () => {
     dispatch(removeAnswer())
     navigate('/')
-
   }
   useEffect(()=>{
 
@@ -138,17 +138,7 @@ const Result = () => {
           : 
           <InvisibleSectionFooter></InvisibleSectionFooter>}
           {showInfoBox ?           
-          <InfoBox>
-            <h3>문의 / 요청사항</h3>
-            <p>이용해 주셔서 갑사합니다.</p>
-            <p style={{color:'black',fontWeight:'bold'}}>문의 사항과 피드백 환영 합니다.</p>
-            <div>직접 이메일로 보내시거나 </div>
-            <div>아래 버튼을 통해 보내주세요 !</div>
-
-            <p><button onClick={()=> setAlertState(true)}>문의하기</button></p>
-            <div>이메일 : webtestlife@gmail.com</div>
-            <span>트위터 : <a target='_blank' href='https://twitter.com/testweblife'>https://twitter.com/testweblife</a> </span>
-          </InfoBox>
+          <InfoBoxComponent setAlertState={setAlertState}></InfoBoxComponent>
           :<InvisibleInfoBox></InvisibleInfoBox>}
 
           </Section_wrapper>
@@ -306,28 +296,7 @@ height:500px;
 width:100%;
 `
 
-const InfoBox = styled.div`
-  display:flex;
-  flex-direction: column;
-  align-items:center;
-  background-color: rgb(125,125,125,0.9);
-  margin-bottom:20px;
-  padding-bottom:20px;
-  border-radius: 4px;
-  word-break:keep-all;
-  text-align: center;
-  word-wrap: break-word;
-  word-break: break-all;
-  animation:0.7s  ease-in-out fadeInEffect;
-  @keyframes fadeInEffect {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-`
+
 const InvisibleInfoBox = styled.div`
 height:500px;
 `

@@ -7,21 +7,25 @@ import kakao from '/home/js/Desktop/flowermbti/src/static/shareIcon/kakaolink_bt
 import faceBook from '/home/js/Desktop/flowermbti/src/static/shareIcon/facebook.png'
 const ShareBoxFooter = ({mbtiFlowerUrl,mbtiContent}:any):JSX.Element => {
 
-  console.log(window.Kakao.isInitialized(),"check KAKAO")
-  console.log(mbtiFlowerUrl,"url 제대로 왔나.")
+  console.log(window.Kakao.isInitialized(), "check KAKAO")
+  console.log(mbtiFlowerUrl, "url 제대로 왔나.")
   return (
     <>
       <SectionFooter>
         <h3>공유</h3>
         <SectionFooterContent>
-          <div>친구에게 공유해 보세요!</div>
+          <div>주변에 공유해 주세요!</div>
           <ShareBtnBox>
             <ShareBtnKakao className='hover' onClick={() => kakaoShareBtn('test', 1, mbtiFlowerUrl, mbtiContent)} src={kakao}></ShareBtnKakao>
-            <ShareBtnFaceBook className='hover' onClick={() => faceBookShareBtn() }></ShareBtnFaceBook>
+            <ShareBtnFaceBook className='hover' onClick={() => faceBookShareBtn()}></ShareBtnFaceBook>
           </ShareBtnBox>
         </SectionFooterContent>
+        <Comment>
+          더 많은 소셜 공유 기능이 추가될 예정 이에요!
+        </Comment>
+
       </SectionFooter>
-  </>
+    </>
   )
 }
 
@@ -36,7 +40,7 @@ height:100%;
 flex-direction: column;
 align-items:center;
 border-radius: 4px;
-background-color:whitesmoke;
+background-color:rgb(245, 245, 245,0.7); /* whitesmoke */
 border:1px solid black;
 margin-bottom:20px;
 padding-bottom:20px;
@@ -96,4 +100,8 @@ color:black;
 font-weight: bold;
 background-color: pink;
 margin-bottom:10px;
+`
+
+const Comment = styled.p`
+color:grey;
 `
