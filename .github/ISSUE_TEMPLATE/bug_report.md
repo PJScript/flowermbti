@@ -38,4 +38,5 @@ A clear and concise description of what the bug is.
  - Resolution: [ex.760x560]
 
 **기타**
+
 example.
