@@ -1,6 +1,6 @@
 ---
 name: Bug_Report
-about: Suggest an idea for this project
+about: 
 title: ''
 labels: ''
 assignees: ''
