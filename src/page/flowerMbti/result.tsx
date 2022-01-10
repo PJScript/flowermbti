@@ -18,7 +18,6 @@ import FallingFlower from "../../component/flowerMbti/fallingFlower";
 import CustomAlert from "../../component/flowerMbti/customAlert";
 import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
 import 'dotenv/config'
-import { Helmet } from "react-helmet";
 import InfoBoxComponent from "../../component/flowerMbti/infoBoxComponent";
 
 const Result = () => {
