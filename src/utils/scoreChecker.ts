@@ -25,12 +25,12 @@ export const scoreChecker = (data:any):any => {
     score_TF = scoreParser(mbti_TF,score_TF,['T','F'])
     score_JP = scoreParser(mbti_JP,score_JP,['J','P'])
   }
-  console.log(`
-  EI = ${score_EI.box}, ${score_EI.alphabetQueue} 
-  SN = ${score_SN.box}, ${score_SN.alphabetQueue} 
-  TF = ${score_TF.box}, ${score_TF.alphabetQueue} 
-  JP = ${score_JP.box}, ${score_JP.alphabetQueue}
-  `)
+  // console.log(`
+  // EI = ${score_EI.box}, ${score_EI.alphabetQueue} 
+  // SN = ${score_SN.box}, ${score_SN.alphabetQueue} 
+  // TF = ${score_TF.box}, ${score_TF.alphabetQueue} 
+  // JP = ${score_JP.box}, ${score_JP.alphabetQueue}
+  // `)
   const result_EI:string = alphabetParser(score_EI.alphabetQueue,['E','I'])
   const result_SN:string = alphabetParser(score_SN.alphabetQueue,['S','N'])
   const result_TF:string = alphabetParser(score_TF.alphabetQueue,['T','F'])

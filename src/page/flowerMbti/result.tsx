@@ -17,7 +17,7 @@ import getRandom  from "../../utils/getRandom";
 import FallingFlower from "../../component/flowerMbti/fallingFlower";
 import CustomAlert from "../../component/flowerMbti/customAlert";
 import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
-import 'dotenv/config'
+// import 'dotenv/config'
 import InfoBoxComponent from "../../component/flowerMbti/infoBoxComponent";
 
 const Result = () => {
@@ -71,7 +71,6 @@ const Result = () => {
       if(get_scroll_percentage() >= 75){
         setShowInfoBox(true)
         window.removeEventListener("scroll",(e)=>{
-          console.log(e)
         })
       }
       // console.log(window.innerHeight,"브라우저 높이")
@@ -92,7 +91,7 @@ const Result = () => {
   // console.log(mbtiContentList)
   // console.log(mbtiContent.list.split('.'))
 
-
+  console.log('rendering result')
   return (
     <>
       

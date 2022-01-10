@@ -39,10 +39,11 @@ const FlowerQuestion = (): JSX.Element => {
     // console.log(element)
     // console.log(questionAnswer,"여기")
   }
-  console.log(count,"카운트")
+
   useEffect(()=>{
-    console.log('test')
+
   },[show])
+  console.log('rendering Questions')
   return (
     <>
       <GlobalBody />

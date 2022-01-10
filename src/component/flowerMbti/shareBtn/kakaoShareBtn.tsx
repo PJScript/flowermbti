@@ -1,7 +1,5 @@
 
 export const kakaoShareBtn = (requestUrl:string, templateId:number, imageUrl:string, mbtiContent:any) => {
-  console.log(mbtiContent,"컨텐츠")
-  console.log(imageUrl,"이미지")
   if(requestUrl === undefined || !requestUrl){
     requestUrl = 'https://twitter.com/testweblife'
   }

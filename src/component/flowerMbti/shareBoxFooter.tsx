@@ -6,9 +6,6 @@ import { kakaoShareBtn } from "./shareBtn/kakaoShareBtn";
 import kakao from '/home/js/Desktop/flowermbti/src/static/shareIcon/kakaolink_btn_medium_ov.png'
 import faceBook from '/home/js/Desktop/flowermbti/src/static/shareIcon/facebook.png'
 const ShareBoxFooter = ({mbtiFlowerUrl,mbtiContent}:any):JSX.Element => {
-
-  console.log(window.Kakao.isInitialized(), "check KAKAO")
-  console.log(mbtiFlowerUrl, "url 제대로 왔나.")
   return (
     <>
       <SectionFooter>

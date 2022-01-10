@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 const InfoBoxComponent = ({setAlertState}:any) => {
-  console.log(setAlertState,"잘왔나")
+
   return (
     <>
       <InfoBox>

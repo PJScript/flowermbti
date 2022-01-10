@@ -9,8 +9,7 @@ import Flowers from './page/flowerMbti/flowers';
 import FlowerQuestion from './page/flowerMbti/flowerQuestion';
 import Home from './page/home';
 import './App.css'
-import * as dotenv from 'dotenv'
-dotenv.config()
+
 
 
 const App = (): JSX.Element => {
