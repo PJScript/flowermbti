@@ -33,21 +33,23 @@ const LoadingWrapper = styled.div.attrs((props)=>{
 
 })`
 display:flex;
-width:100%;
+position:absolute;
+left:0;
+top:0;
 height:100vh;
 justify-content:center;
 align-items: center;
 position:fixed;
 background-color:white;
 /* background-image:white; */
-z-index:2;
+/* z-index:2; */
 visibility:${(props) => (props.visible === true ? 'visible' : 'hidden')};
 top:0;
 left:0;
 bottom:0;
 right:0;
-margin-right:6px;
-margin-left:6px;
+/* margin-right:6px; */
+/* margin-left:6px; */
 
 ` 
 
