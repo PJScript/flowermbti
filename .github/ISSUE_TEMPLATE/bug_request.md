@@ -1,5 +1,5 @@
 ---
-name: Feature request123
+name: Bug_Report
 about: Suggest an idea for this project
 title: ''
 labels: ''
