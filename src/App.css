@@ -2,12 +2,16 @@
 .hover:hover{
   cursor: pointer;
 }
-
-.hoverOrange:hover{
+@media (pointer:coarse) {
+  .hoverOrange{
+    background-color:rgb(255, 165, 0,0.7);
+  }
+}
+/* .hoverOrange:hover{
   cursor: pointer;
   color:orange;
   border:1px solid orange;
-}
+} */
 
 .test{
   /* color:rgba(65, 50, 0, 0.644) */
