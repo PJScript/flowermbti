@@ -1,0 +1,17 @@
+
+.hover:hover{
+  cursor: pointer;
+}
+
+.hoverOrange:hover{
+  cursor: pointer;
+  color:orange;
+  border:1px solid orange;
+}
+
+.test{
+  /* color:rgba(65, 50, 0, 0.644) */
+  color:rgb(245, 245, 245)
+
+}
+
