@@ -42,7 +42,7 @@ align-items: center;
 position:fixed;
 background-color:white;
 /* background-image:white; */
-/* z-index:2; */
+z-index:1;
 visibility:${(props) => (props.visible === true ? 'visible' : 'hidden')};
 top:0;
 left:0;
