@@ -19,7 +19,8 @@ const persistConfig = {
   storage,
 }
 const persistedReducer = persistReducer(persistConfig,rootReducer)
-const store = createStore(persistedReducer, applyMiddleware(createLogger.logger as any))
+// const store = createStore(persistedReducer, applyMiddleware(createLogger.logger as any))
+const store = createStore(persistedReducer)
 // const store = createStore(rootReducer, applyMiddleware(createLogger.logger as any))
 let persistor = persistStore(store)
 

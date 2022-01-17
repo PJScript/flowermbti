@@ -14,6 +14,7 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { removeAnswer } from "../../redux/action";
+import Loading from "../../component/loading";
 const Flowers = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -21,7 +22,7 @@ const Flowers = () => {
   const [alertState, setAlertState] = useState<Boolean>(false)
   
   const explodeBtn = useCallback(()=>{
-    console.log('test')
+
   },[]) 
 
   const clickReplayBtn = () => {
@@ -49,16 +50,17 @@ const Flowers = () => {
     dummyContent('ESFP'),
   )
   const clickImg = (t:any) => {
-    console.log(t,"여기")
+
     setVisible(false)
   }
   const flowerListMaker = () => {
   
   }
-  console.log(test, "테스트")
+  console.log('rendering flowers')
   return (
     <>
       <GlobalBody />
+      <Loading ></Loading>
       <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>
       <FlowerInfoModal visible={visible} setVisible={setVisible}></FlowerInfoModal>
       <FlowersPageRootDiv style={{fontFamily:'NanumPenScript',fontSize:'1.5em'}}>
@@ -72,7 +74,7 @@ const Flowers = () => {
           {/* <FlowerListSection> */}
           <FlowerListUl>
               {test.map((item, idx) => {
-                console.log(item, "아이템")
+                // console.log(item, "아이템")
                 FlowerImg.defaultProps = {
                   src: item.img
                 }
@@ -87,10 +89,13 @@ const Flowers = () => {
                           <>{item.nickName} <br></br>{item.flowerName}</>
                         </CardBack>
                       </FlowerLi>
-                    </>
-                  )
-            })}
-              </FlowerListUl>
+                  </>
+                )
+              })}
+          </FlowerListUl>
+          <GameBtnBox>
+            <div className="hover" onClick={()=>alert('준비중 입니다! 곧 추가됨')}>미니게임 하러가기</div>
+          </GameBtnBox>
           {/* </FlowerListSection> */}
 
           {/* <span className='hoverOrange'>더보기</span>
@@ -159,7 +164,7 @@ max-width:900px;
 list-style-type: none;
 border:1px solid green;
 /* background-color:rgb(253, 246, 237,0.9); */
-background-color:rgb(223, 195, 160,0.7);
+background-color:rgb(223, 195, 160,0.8);
 border-radius:6px;
 margin:0px;
 margin-top:10px;
@@ -232,7 +237,7 @@ const CardFront = styled.section`
   transform:rotateY(0deg);
   z-index:1;
   position:absolute;
-  background-color:rgb(245, 245, 245,0.5);
+  background-color:rgb(245, 245, 245,0.95);
 
   border-radius:6px;
 `
@@ -341,7 +346,6 @@ max-width:900px;
 height:100%;
 animation:1.4s  ease-in-out fadeInEffect;
 
-
 @keyframes fadeInEffect {
     0%{
         opacity: 0;
@@ -350,5 +354,14 @@ animation:1.4s  ease-in-out fadeInEffect;
         opacity: 1;
     }
 }
+`
+
+const GameBtnBox = styled.p`
+  width:95%;
+  max-width:400px;
+  height:100%;
+  text-align: center;
+  background-color:rgba(241,205,44,0.9);
+  border-radius:6px;
 `
 export default Flowers;

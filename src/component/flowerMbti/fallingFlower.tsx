@@ -8,7 +8,7 @@ import getRandom from "../../utils/getRandom";
 
 const FallingFlower = () => {
   const clickFlowerIcon = useCallback(()=>{
-    console.log("이벤트발생")
+
   },[])
   const FlowerMaker = useCallback((value:number | undefined)=>{
     if(value === undefined || typeof(value) !== 'number'){

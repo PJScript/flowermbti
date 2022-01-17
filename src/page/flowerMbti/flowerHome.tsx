@@ -17,7 +17,7 @@ const FlowerHome = (): JSX.Element => {
   useEffect(()=>{
     dispatch(removeAnswer())
   },[])
-
+  console.log('rendering Home')
   return (
     <>
       <GlobalBody />
