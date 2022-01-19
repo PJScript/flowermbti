@@ -59,7 +59,7 @@ const FlowerQuestion = (): JSX.Element => {
               <h6>{questionAnswer[count].question}</h6>
               <AnswerBox>  {/** Answer List Maker **/}
                   {questionAnswer[count].answer.map((item) => {
-                    return <AnswerBox_item className="hoverOrange" key={item} onClick={GoNextQuestion}>{item}</AnswerBox_item>
+                    return <AnswerBox_item className="hoverOrange" key={item+1} onClick={GoNextQuestion}>{item}</AnswerBox_item>
                   })}
                 </AnswerBox>
               </QuestionBox_center>

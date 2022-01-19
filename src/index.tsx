@@ -12,7 +12,7 @@ import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import * as createLogger from 'redux-logger';
 import { PersistGate } from 'redux-persist/integration/react';
-
+import { ApolloProvider, ApolloClient,createHttpLink,InMemoryCache } from '@apollo/client';
 
 const persistConfig = {
   key: 'root',
