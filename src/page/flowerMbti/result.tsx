@@ -83,11 +83,11 @@ const Result = ({...props}) => {
 
     
   useEffect(()=>{
-    console.log(data,"데이터")
+    // console.log(data,"데이터")
   },[data])
   console.log('rendering result')
   if(loading){
-    return (<p>로딩중 ...</p>)
+    return (<Loading></Loading>)
   }else{
     let arr = data.getMbtiContent.listDesc.split('.')
     props.client.writeQuery({
@@ -156,7 +156,7 @@ const Result = ({...props}) => {
           <InvisibleRouteBtnBox></InvisibleRouteBtnBox>
         }
         {showSectionFooter ?
-        <ShareBoxFooter mbtiFlowerUrl={mbtiFlowerUrl} mbtiContent={mbtiContent}></ShareBoxFooter>
+        <ShareBoxFooter mbtiFlowerUrl={data.getMbtiContent.imgUrl} mbtiContent={data.getMbtiContent}></ShareBoxFooter>
         : 
         <InvisibleSectionFooter></InvisibleSectionFooter>}
           {showInfoBox ?

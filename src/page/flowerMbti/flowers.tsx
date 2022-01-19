@@ -59,6 +59,7 @@ const Flowers = () => {
   console.log('rendering flowers')
   return (
     <>
+    
       <GlobalBody />
       <Loading ></Loading>
       <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>

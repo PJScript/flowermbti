@@ -3,10 +3,19 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { ClipLoader } from 'react-spinners'
+import { css } from '@emotion/react'
 const Loading = ({ msg }: any) => {
   let [visible, setAlertState] = useState<Boolean>(true)
+  
   // seAlertState 모달을 띄울 페이지에서 상태관리 true or false
   // backEvnet 모달창 배경 클릭시 모달 닫기 관리 true or false
+
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: green;
+`;
   useEffect(()=>{ 
     setTimeout(()=>{
       console.log('test')
@@ -17,12 +26,13 @@ const Loading = ({ msg }: any) => {
   return (
     <>
       <LoadingWrapper visible={visible}>
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
-          <div>꽃밭으로 걸어가는중..</div>
-        </div>
-        {/* <LoadingMsg>{msg}</LoadingMsg>
-          <LoadingCheckBtn className='hoverOrange' onClick={() => setAlertState(false)}>확인</LoadingCheckBtn> */}
+        <LoadingInner className="spinner-border" role="status">
+        <ClipLoader color="green" loading={true} css={override} size={20} />
+          {/* <span className="visually-hidden">Loading...</span> */}
+          <div>로딩 중...</div>
+        </LoadingInner>
+        {/* <LoadingMsg>{msg}</LoadingMsg> */}
+          {/* <LoadingCheckBtn className='hoverOrange' onClick={() => setAlertState(false)}>확인</LoadingCheckBtn> */}
       </LoadingWrapper>
     </>
   )
@@ -33,14 +43,13 @@ const LoadingWrapper = styled.div.attrs((props)=>{
 
 })`
 display:flex;
-position:absolute;
-left:0;
-top:0;
-height:100vh;
+flex-direction: column;
 justify-content:center;
 align-items: center;
+height:100vh;
 position:fixed;
 background-color:white;
+
 /* background-image:white; */
 z-index:1;
 visibility:${(props) => (props.visible === true ? 'visible' : 'hidden')};

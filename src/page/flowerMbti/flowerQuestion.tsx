@@ -147,7 +147,7 @@ const AnswerBox_item = styled.li`
   color:black;
   width:100%;
   height:50px;
-  background-color:#FDF4EA;
+  background-color:rgba(0, 153, 164, 0.712);
   border-radius: 6px;
   margin-bottom:15px;
   border:1px solid black;
