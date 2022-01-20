@@ -10,9 +10,6 @@ import { useQuery, gql } from '@apollo/client';
 import { GET_USERS } from '../../graphQl/queries';
 
 const FlowerHome = (): JSX.Element => {
-
-
-
   const navigate = useNavigate();
   const dispatch = useDispatch()
 

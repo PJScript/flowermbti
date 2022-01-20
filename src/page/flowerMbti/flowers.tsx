@@ -30,25 +30,25 @@ const Flowers = () => {
     navigate('/')
   }
 
-  let test:any[] =  []
-  test.push(
-    dummyContent('INTJ'),
-    dummyContent('INTP'),
-    dummyContent('ENTJ'),
-    dummyContent('ENTP'),
-    dummyContent('INFJ'),
-    dummyContent('INFP'),
-    dummyContent('ENFJ'),
-    dummyContent('ENFP'),
-    dummyContent('ISTJ'),
-    dummyContent('ISFJ'),
-    dummyContent('ESTJ'),
-    dummyContent('ESFJ'),
-    dummyContent('ISTP'),
-    dummyContent('ISFP'),
-    dummyContent('ESTP'),
-    dummyContent('ESFP'),
-  )
+  // let test:any[] =  []
+  // test.push(
+  //   dummyContent('INTJ'),
+  //   dummyContent('INTP'),
+  //   dummyContent('ENTJ'),
+  //   dummyContent('ENTP'),
+  //   dummyContent('INFJ'),
+  //   dummyContent('INFP'),
+  //   dummyContent('ENFJ'),
+  //   dummyContent('ENFP'),
+  //   dummyContent('ISTJ'),
+  //   dummyContent('ISFJ'),
+  //   dummyContent('ESTJ'),
+  //   dummyContent('ESFJ'),
+  //   dummyContent('ISTP'),
+  //   dummyContent('ISFP'),
+  //   dummyContent('ESTP'),
+  //   dummyContent('ESFP'),
+  // )
   const clickImg = (t:any) => {
 
     setVisible(false)
@@ -73,7 +73,7 @@ const Flowers = () => {
           </FlowerListTitle>
 
           {/* <FlowerListSection> */}
-          <FlowerListUl>
+          {/* <FlowerListUl>
               {test.map((item, idx) => {
                 // console.log(item, "아이템")
                 FlowerImg.defaultProps = {
@@ -93,7 +93,7 @@ const Flowers = () => {
                   </>
                 )
               })}
-          </FlowerListUl>
+          </FlowerListUl> */}
           <GameBtnBox>
             <div className="hover" onClick={()=>alert('준비중 입니다! 곧 추가됨')}>미니게임 하러가기</div>
           </GameBtnBox>
@@ -195,9 +195,9 @@ border-radius:6px;
 /* outline:1px solid grey; */
 transform-style: preserve-3d;
 
--webkit-transition: transform 1s;
+/* -webkit-transition: transform 1s;
 -moz-transition:transform 1s;
--o-transition: transform 1s;
+-o-transition: transform 1s; */
 transition: transform 1s;
 perspective:2000px;
 width:150px;
@@ -213,10 +213,10 @@ padding-bottom:10px;
 
 
 &:hover{
-  -moz-transform: rotateY(180deg);
+  /* -moz-transform: rotateY(180deg); */
   transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-  -o-transform:rotateY(180deg);
+  /* -webkit-transform: rotateY(180deg);
+  -o-transform:rotateY(180deg); */
 }
 
   @media screen and (max-width:660px){
@@ -242,9 +242,9 @@ const CardFront = styled.section`
   /* border:1px solid grey;
   border-radius: 6px; */
   backface-visibility:hidden;        /* safari, firefox */
-  -webkit-transform:rotateY(0deg);
+  /* -webkit-transform:rotateY(0deg);
   -moz-transform: rotateY(180deg);
-  -o-transform:rotateY(0deg);
+  -o-transform:rotateY(0deg); */
   transform:rotateY(0deg);
   z-index:3;
   position:absolute;
@@ -260,9 +260,9 @@ const CardBack = styled.div`
   height:100%;
   max-height: 167px;
   backface-visibility:visible;    /* safari, firefox */
-  -webkit-transform: rotateY(180deg);
+  /* -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(0deg);
-  -o-transform:rotateY(180deg);
+  -o-transform:rotateY(180deg); */
   transform:rotateY(180deg);
   z-index:2;
   position:absolute;

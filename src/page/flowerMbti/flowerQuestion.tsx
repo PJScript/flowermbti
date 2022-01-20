@@ -27,15 +27,19 @@ const FlowerQuestion = (): JSX.Element => {
     dispatch(insertAnswer(count,a))
     setScore([...score,a])
     setShow(false)
+    
     setTimeout(()=>{
-      if(count == questionAnswer.length-1){
+      if(count === questionAnswer.length-1){
         // alert('마지막')
         navigate('/project/1/result')
       }else{
+        console.log('사라짐')
         setShow(true)
         setCount(count+1)
       }
     },200)
+
+
     // console.log(element)
     // console.log(questionAnswer,"여기")
   }
@@ -90,7 +94,7 @@ const VisibleQuestionBox = styled.div`
 display:flex;
 flex-direction: column;
 width:100%;
-animation: 0.7s ease-in--out fadeInEffect;
+animation: 0.7s ease-in fadeInEffect;
 @keyframes fadeInEffect {
     0%{
         opacity: 0;
@@ -106,14 +110,14 @@ display:flex;
 flex-direction: column;
 width:100%;
 pointer-events:none;
-animation: 0.2s ease-in--out fadeOutEffect;
+animation: 0.7s ease-out fadeOutEffect;
 @keyframes fadeOutEffect {
     0%{
         transform: translateY(0px);
         opacity: 1;
     }
     100%{
-        transform: translateY(-30px);
+        transform: translateY(-60px);
         opacity: 0;
     }
 }
