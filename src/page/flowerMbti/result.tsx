@@ -9,41 +9,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux";
 import ShareBoxFooter from "../../component/flowerMbti/shareBoxFooter";
 import { scoreChecker } from "../../utils/scoreChecker";
-import dummyContent from "../../component/flowerMbti/dummyContent";
 import { removeAnswer } from "../../redux/action";
-
 import getRandom  from "../../utils/getRandom";
-
 import FallingFlower from "../../component/flowerMbti/fallingFlower";
 import CustomAlert from "../../component/flowerMbti/customAlert";
 import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
-// import 'dotenv/config'
 import InfoBoxComponent from "../../component/flowerMbti/infoBoxComponent";
+import { useQuery, gql } from '@apollo/client';
+import { GET_MBTICONTENT, PING } from "../../graphQl/queries";
+import Loading from "../../component/loading";
 
-const Result = () => {
+const Result = ({...props}) => {
   const dispatch = useDispatch()
   let answerList = useSelector((state:RootState) => state.answerReducer);
+  let mbtiCode = scoreChecker(answerList)
+  mbtiCode = mbtiCode.replaceAll(",","")
+  const {error, loading, data} = useQuery(GET_MBTICONTENT,{variables:{mbtiCode:mbtiCode},fetchPolicy:"cache-first"})
+
+
 
   const navigate = useNavigate();
   const [showRouteBox, setShowRouteBox] = useState<boolean>(true)
   const [showSectionFooter, setShowSectionFooter] = useState<boolean>(false)
   const [showInfoBox, setShowInfoBox] = useState<boolean>(false)
   const [mbtiContent, setMbti]  = useState<any>('')
-  const [mbtiSubTitle, setMbtiSubTitle] = useState<any[]>(['test','test1'])
   const [mbtiFlowerUrl, setMbtiFlowerUrl] = useState<string>('')
-  const [mbtiFlowerName, setMbtiFlowerName] = useState<string>('')
-  const [mbtiFlowerNickName, setMbtiFlowerNickName] = useState<string>('')
   const [alertState, setAlertState] = useState<boolean>(false)
+  const [listDesc, setListDesc] = useState<string[]>(['test','test1'])
   
 
 
   const clickFlowersBtn = () => {
     
     setAlertState(true)
-    // navigate('/project/1/flowers')
   }
   
- 
 
 
 
@@ -51,99 +51,124 @@ const Result = () => {
     dispatch(removeAnswer())
     navigate('/')
   }
-  useEffect(()=>{
 
-    let mbti = scoreChecker(answerList)
-    mbti = mbti.replaceAll(",","")
-    let resultMbti = dummyContent(mbti)
-    setMbti(resultMbti)
-    setMbtiFlowerUrl(resultMbti.img)
-    setMbtiFlowerName(resultMbti.flowerName)
-    setMbtiFlowerNickName(resultMbti.nickName)
+  useEffect(() => {
     
-    window.addEventListener("scroll",(e)=>{
-      if(get_scroll_percentage() >= 30){
+
+
+
+
+
+    window.addEventListener("scroll", (e) => {
+      if (get_scroll_percentage() >= 30) {
         setShowRouteBox(true)
       }
-      if(get_scroll_percentage() >= 55){
+      if (get_scroll_percentage() >= 55) {
         setShowSectionFooter(true)
       }
-      if(get_scroll_percentage() >= 75){
+      if (get_scroll_percentage() >= 75) {
         setShowInfoBox(true)
-        window.removeEventListener("scroll",(e)=>{
+        window.removeEventListener("scroll", (e) => {
         })
       }
+
+      window.addEventListener("onbeforeunload", (e)=>{
+        console.log(e,"여기")
+      })
       // console.log(window.innerHeight,"브라우저 높이")
       // console.log(document.documentElement.scrollHeight,"전체문서 높이")
       // console.log(window.scrollY,"스크롤한 높이")
     });
-    
   },[])
 
+    
   useEffect(()=>{
-    if(!mbtiContent){
+    // console.log(data,"데이터")
+  },[data])
+  // console.log('rendering result')
+  if(loading){
+    return (<Loading></Loading>)
+  }else{
+    let arr = data.getMbtiContent.listDesc.split('.')
+    props.client.writeQuery({
+      query:GET_MBTICONTENT,
+      data:{
+        getMbtiContent:{
+          __typename:'FlowerInfo',
+          id:data.getMbtiContent.id,
+          desc:data.getMbtiContent.desc,
+          imgUrl:data.getMbtiContent.imgUrl,
+          mbtiCode:data.getMbtiContent.mbtiCode,
+          nickName:data.getMbtiContent.nickName,
+          engName:data.getMbtiContent.engName,
+          flowerName:data.getMbtiContent.flowerName,
+          listDesc:data.getMbtiContent.listDesc
+        },
+      },
+      variables:{mbtiCode:"INTJ"}
+    })
 
-    }else{
-      setMbtiSubTitle(mbtiContent.list.split('.'))
-    }
+  window.onbeforeunload = () => {
+    // console.log('새로고침 감지')
+    
+    return navigate('/project/1/result')
+    // return "test"
+  }
 
-  },[mbtiFlowerUrl])
-  // console.log(mbtiContentList)
-  // console.log(mbtiContent.list.split('.'))
 
-  console.log('rendering result')
+
   return (
     <>
-      
-      <GlobalBody />    
-      <Sample>    
-        <FallingFlower></FallingFlower>
-        Result Page
-        <h2>결과</h2>
-        <Section_wrapper>
-          <SectionTitle>
-            <SectionTitleNickName>{mbtiFlowerNickName}</SectionTitleNickName>
-            <SectionTitleName>{mbtiFlowerName}</SectionTitleName>
-          </SectionTitle>
-          <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>
-          <SectionBody>
-            <MbtiFlowerImg>
-              <img width='80%' src={mbtiFlowerUrl}></img>
-            </MbtiFlowerImg>
-            <SectionListContentUl>
-              {mbtiSubTitle.map((item)=>{
-                if(item === '' || item === undefined){
-                  
-                }else{
-                  return <SectionListContentLi>{item}</SectionListContentLi>
-                }
+    <GlobalBody />    
+    <Sample>    
+      <FallingFlower></FallingFlower>
+      Result Page
+      <h2>결과</h2>
+      <Section_wrapper>
+        <SectionTitle>
+          <SectionTitleNickName>{data.getMbtiContent.nickName}</SectionTitleNickName>
+          <SectionTitleName>{data.getMbtiContent.flowerName}</SectionTitleName>
+        </SectionTitle>
+        <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>
+        <SectionBody>
+          <MbtiFlowerImg>
+            <img width='80%' src={data.getMbtiContent.imgUrl}></img>
+          </MbtiFlowerImg>
+          <SectionListContentUl>
+            {arr.map((item:string)=>{
+              if(item === '' || item === undefined){
+                
+              }else{
+                return <SectionListContentLi>{item}</SectionListContentLi>
+              }
 
-              })}
+            })}
 
-            </SectionListContentUl>
-            <SectionContent>{mbtiContent.normal}</SectionContent>
-          </SectionBody>
-          {showRouteBox ?
-            <RouteBtnBox>
-              <div className='hover' onClick={clickReplayBtn}>다시하기</div>
-              <div className='hover' onClick={clickFlowersBtn}>정원 들어가기</div>
-            </RouteBtnBox>
-            :
-            <InvisibleRouteBtnBox></InvisibleRouteBtnBox>
-          }
-          {showSectionFooter ?
-          <ShareBoxFooter mbtiFlowerUrl={mbtiFlowerUrl} mbtiContent={mbtiContent}></ShareBoxFooter>
-          : 
-          <InvisibleSectionFooter></InvisibleSectionFooter>}
-          {showInfoBox ?           
-          <InfoBoxComponent setAlertState={setAlertState}></InfoBoxComponent>
-          :<InvisibleInfoBox></InvisibleInfoBox>}
+          </SectionListContentUl>
+          <SectionContent>{data.getMbtiContent.desc}</SectionContent>
+        </SectionBody>
+        {showRouteBox ?
+          <RouteBtnBox>
+            <div className='hover' onClick={clickReplayBtn}>다시하기</div>
+            <div className='hover' onClick={clickFlowersBtn}>정원 들어가기</div>
+          </RouteBtnBox>
+          :
+          <InvisibleRouteBtnBox></InvisibleRouteBtnBox>
+        }
+        {showSectionFooter ?
+        <ShareBoxFooter mbtiFlowerUrl={data.getMbtiContent.imgUrl} mbtiContent={data.getMbtiContent}></ShareBoxFooter>
+        : 
+        <InvisibleSectionFooter></InvisibleSectionFooter>}
+          {showInfoBox ?
+            <InfoBoxComponent setAlertState={setAlertState}></InfoBoxComponent>
+            : <InvisibleInfoBox></InvisibleInfoBox>}
 
-          </Section_wrapper>
+        </Section_wrapper>
       </Sample>
 
     </>
-  )
+    )
+  }
 }
 
 
@@ -315,4 +340,4 @@ padding-bottom: 14px;
 
 
 
-export default Result;
+export default React.memo(Result);

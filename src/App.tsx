@@ -7,12 +7,38 @@ import FlowerHome from './page/flowerMbti/flowerHome';
 import Result from './page/flowerMbti/result'
 import Flowers from './page/flowerMbti/flowers';
 import FlowerQuestion from './page/flowerMbti/flowerQuestion';
+import { 
+  ApolloProvider, 
+  ApolloClient,
+  createHttpLink,
+  InMemoryCache,
+  HttpLink,
+  from
+} from '@apollo/client';
+import { gql } from '@apollo/client'
 import Home from './page/home';
 import './App.css'
-
+import {onError} from '@apollo/client/link/error'
 
 
 const App = (): JSX.Element => {
+  const errorLink = onError(({graphQLErrors, networkError}) => {
+    if(graphQLErrors){
+      graphQLErrors.map(({message, locations, path}) => {
+        alert('Graphql error' + message)
+      })
+    }
+  })
+  const link = from([
+    errorLink,
+    new HttpLink({uri:process.env.REACT_APP_APOLLOURL})
+  ])
+  const client = new ApolloClient({
+    uri:process.env.REACT_APP_APOLLOURL,
+    link: link,
+    // link:createHttpLink({uri: 'http://127.0.0.1:4000/graphql'}),
+    cache:new InMemoryCache()
+  })
 
   const kakaoStatus = useScript("https://developers.kakao.com/sdk/js/kakao.js");
   const faceBookStatus = useScript("https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v12.0");
@@ -35,6 +61,7 @@ const App = (): JSX.Element => {
 	}, [kakaoStatus]);	
   return (
     <>
+    <ApolloProvider client={client}>
     <GlobalBody />
     {/* {minutes}분,{seconds} 후 갱신됩니다! @꽃 종류 갱신 타이머, 찾은 횟수 등 통계자료 */}
     <Routes>
@@ -42,8 +69,9 @@ const App = (): JSX.Element => {
       <Route path="/" element={<FlowerHome/>}/>
       <Route path="/project/1/question" element={<FlowerQuestion/>} />
       <Route path="/project/1/flowers" element={<Flowers/>} />
-      <Route path="/project/1/result"  element={<Result/>} />
+      <Route path="/project/1/result"  element={<Result client={client}/>} />
     </Routes>
+    </ApolloProvider>
     </>
   );
 }

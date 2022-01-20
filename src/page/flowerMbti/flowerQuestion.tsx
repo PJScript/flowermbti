@@ -43,7 +43,7 @@ const FlowerQuestion = (): JSX.Element => {
   useEffect(()=>{
 
   },[show])
-  console.log('rendering Questions')
+  // console.log('rendering Questions')
   return (
     <>
       <GlobalBody />
@@ -59,7 +59,7 @@ const FlowerQuestion = (): JSX.Element => {
               <h6>{questionAnswer[count].question}</h6>
               <AnswerBox>  {/** Answer List Maker **/}
                   {questionAnswer[count].answer.map((item) => {
-                    return <AnswerBox_item className="hoverOrange" key={item} onClick={GoNextQuestion}>{item}</AnswerBox_item>
+                    return <AnswerBox_item className="hoverOrange" key={item+1} onClick={GoNextQuestion}>{item}</AnswerBox_item>
                   })}
                 </AnswerBox>
               </QuestionBox_center>
@@ -147,7 +147,7 @@ const AnswerBox_item = styled.li`
   color:black;
   width:100%;
   height:50px;
-  background-color:#FDF4EA;
+  background-color:rgba(0, 153, 164, 0.712);
   border-radius: 6px;
   margin-bottom:15px;
   border:1px solid black;
