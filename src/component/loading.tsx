@@ -16,12 +16,6 @@ const Loading = ({ msg }: any) => {
     margin: 0 auto;
     border-color: green;
 `;
-  useEffect(()=>{ 
-    setTimeout(()=>{
-      // console.log('test')
-      setAlertState(false)
-    },3000)
-  },[])
 
   return (
     <>

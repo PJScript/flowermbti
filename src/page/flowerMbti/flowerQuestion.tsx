@@ -33,13 +33,20 @@ const FlowerQuestion = (): JSX.Element => {
         // alert('마지막')
         navigate('/project/1/result')
       }else{
-        console.log('사라짐')
         setShow(true)
         setCount(count+1)
       }
     },200)
   }
   // console.log('rendering Questions')
+  useEffect(()=>{
+    window.addEventListener('popstate',(e)=>{
+      navigate('/')
+    })
+    window.removeEventListener('popstate',()=>{
+    })
+  },[])
+
   return (
     <>
       <GlobalBody />
@@ -55,7 +62,7 @@ const FlowerQuestion = (): JSX.Element => {
               <h6>{questionAnswer[count].question}</h6>
               <AnswerBox>  {/** Answer List Maker **/}
                   {questionAnswer[count].answer.map((item) => {
-                    console.log(item,"아이템")
+                    // console.log(item,"아이템")
                     return <AnswerBox_item className="hoverOrange" key={item} onClick={GoNextQuestion}>{item}</AnswerBox_item>
                   })}
                 </AnswerBox>
@@ -144,7 +151,7 @@ const AnswerBox_item = styled.li`
   color:black;
   width:100%;
   height:50px;
-  background-color:rgba(0, 153, 164, 0.712);
+  background-color:#D8E5C4;
   border-radius: 6px;
   margin-bottom:15px;
   border:1px solid black;

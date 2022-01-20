@@ -24,6 +24,20 @@ export const GET_MBTICONTENT = gql`
   }
 `
 
+export const GET_MBTICONTENT_IMG_NAME = gql`
+  query getMbtiContent{
+    getMbtiContent{
+      id,
+      mbtiCode,
+      listDesc,
+      imgUrl,
+      flowerName,
+      engName,
+      nickName
+    }
+  }
+`
+
 export const PING = gql`
   query {
     ping 

@@ -15,53 +15,45 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { removeAnswer } from "../../redux/action";
 import Loading from "../../component/loading";
+import { useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_MBTICONTENT_IMG_NAME } from "../../graphQl/queries";
+
+interface listObjType {
+  __typename:string,
+  id:string,
+  mbtiContent:string,
+  listDesc:string,
+  mbtiCode:string,
+  flowerName:string,
+  imgUrl:string,
+  nickName:string
+}
 const Flowers = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [visible, setVisible] = useState<Boolean>(true)
   const [alertState, setAlertState] = useState<Boolean>(false)
-  
-  const explodeBtn = useCallback(()=>{
+  const [imgStateStack, setImgStateStack] = useState<number>(0)
 
-  },[]) 
+  const{error, loading, data} = useQuery(GET_MBTICONTENT_IMG_NAME,{fetchPolicy:'cache-first'})
+  // console.log(data,'잘왔나')
 
   const clickReplayBtn = () => {
     dispatch(removeAnswer())
     navigate('/')
   }
-
-  // let test:any[] =  []
-  // test.push(
-  //   dummyContent('INTJ'),
-  //   dummyContent('INTP'),
-  //   dummyContent('ENTJ'),
-  //   dummyContent('ENTP'),
-  //   dummyContent('INFJ'),
-  //   dummyContent('INFP'),
-  //   dummyContent('ENFJ'),
-  //   dummyContent('ENFP'),
-  //   dummyContent('ISTJ'),
-  //   dummyContent('ISFJ'),
-  //   dummyContent('ESTJ'),
-  //   dummyContent('ESFJ'),
-  //   dummyContent('ISTP'),
-  //   dummyContent('ISFP'),
-  //   dummyContent('ESTP'),
-  //   dummyContent('ESFP'),
-  // )
   const clickImg = (t:any) => {
-
     setVisible(false)
   }
-  const flowerListMaker = () => {
-  
-  }
-  // console.log('rendering flowers')
+
+  if(loading && imgStateStack < 16){
+    return (<Loading></Loading>)
+  }  else  {
   return (
     <>
-    
       <GlobalBody />
-      <Loading ></Loading>
+
       <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>
       <FlowerInfoModal visible={visible} setVisible={setVisible}></FlowerInfoModal>
       <FlowersPageRootDiv style={{fontFamily:'NanumPenScript',fontSize:'1.5em'}}>
@@ -73,18 +65,18 @@ const Flowers = () => {
           </FlowerListTitle>
 
           {/* <FlowerListSection> */}
-          {/* <FlowerListUl>
-              {test.map((item, idx) => {
-                // console.log(item, "아이템")
+          <FlowerListUl>
+              {data.getMbtiContent.map((item:listObjType, idx:number) => {
+                // console.log(idx,"인덱스")
                 FlowerImg.defaultProps = {
-                  src: item.img
+                  src: item.imgUrl
                 }
                   return (
                     <>
-                      <FlowerLi>
+                      <FlowerLi key={idx.toString()}>
                         <CardFront>
-                        <FlowerImg></FlowerImg>
-                        <FlowerImgTitle onClick={explodeBtn}>{item.flowerName}</FlowerImgTitle>
+                        <FlowerImg onLoad={()=>{setImgStateStack(imgStateStack+1)}}></FlowerImg>
+                        <FlowerImgTitle >{item.flowerName}</FlowerImgTitle>
                         </CardFront>
                         <CardBack>
                           <>{item.nickName} <br></br>{item.flowerName}</>
@@ -93,7 +85,7 @@ const Flowers = () => {
                   </>
                 )
               })}
-          </FlowerListUl> */}
+          </FlowerListUl>
           <GameBtnBox>
             <div className="hover" onClick={()=>alert('준비중 입니다! 곧 추가됨')}>미니게임 하러가기</div>
           </GameBtnBox>
@@ -124,6 +116,7 @@ const Flowers = () => {
 
     </>
   )
+  }
 }
 
 const FlowersPageRootDiv = styled.div`
@@ -370,12 +363,13 @@ animation:1.4s  ease-in--out fadeInEffect;
 }
 `
 
-const GameBtnBox = styled.p`
+const GameBtnBox = styled.div`
   width:95%;
   max-width:400px;
   height:100%;
   text-align: center;
   background-color:rgba(241,205,44,0.9);
   border-radius:6px;
+  margin-top:20px;
 `
 export default Flowers;
