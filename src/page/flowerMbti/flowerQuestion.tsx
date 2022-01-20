@@ -38,15 +38,7 @@ const FlowerQuestion = (): JSX.Element => {
         setCount(count+1)
       }
     },200)
-
-
-    // console.log(element)
-    // console.log(questionAnswer,"여기")
   }
-
-  useEffect(()=>{
-
-  },[show])
   // console.log('rendering Questions')
   return (
     <>
@@ -63,7 +55,8 @@ const FlowerQuestion = (): JSX.Element => {
               <h6>{questionAnswer[count].question}</h6>
               <AnswerBox>  {/** Answer List Maker **/}
                   {questionAnswer[count].answer.map((item) => {
-                    return <AnswerBox_item className="hoverOrange" key={item+1} onClick={GoNextQuestion}>{item}</AnswerBox_item>
+                    console.log(item,"아이템")
+                    return <AnswerBox_item className="hoverOrange" key={item} onClick={GoNextQuestion}>{item}</AnswerBox_item>
                   })}
                 </AnswerBox>
               </QuestionBox_center>
@@ -77,7 +70,7 @@ const FlowerQuestion = (): JSX.Element => {
                 <h6>{questionAnswer[count].question}</h6>
                 <AnswerBox>  {/** Answer List Maker **/}
                   {questionAnswer[count].answer.map((item) => {
-                    return <AnswerBox_item className="hoverOrange" onClick={GoNextQuestion}>{item}</AnswerBox_item>
+                    return <AnswerBox_item className="hoverOrange" key={item}onClick={GoNextQuestion}>{item}</AnswerBox_item>
                   })}
                 </AnswerBox>
               </QuestionBox_center>

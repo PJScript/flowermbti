@@ -143,10 +143,11 @@ const Result = ({...props}) => {
           </MbtiFlowerImg>
           <SectionListContentUl>
             {data.getMbtiContent[0].listDesc.split('.').map((item:string)=>{
+              console.log(item,"아이템")
               if(item === '' || item === undefined){
                 
               }else{
-                return <SectionListContentLi>{item}</SectionListContentLi>
+                return <SectionListContentLi key={item}>{item}</SectionListContentLi>
               }
 
             })}
