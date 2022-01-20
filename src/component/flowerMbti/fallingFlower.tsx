@@ -39,7 +39,7 @@ const FallingFlower = () => {
       }
 
 
-      result.push(<FlowerIcon className="hover" onClick={clickFlowerIcon}
+      result.push(<FlowerIcon className="hover" onClick={clickFlowerIcon} key={i}
         style={{
           animation:
             `${keyframesArr[randomAnimation]} 
