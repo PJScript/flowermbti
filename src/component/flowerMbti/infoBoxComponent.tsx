@@ -33,7 +33,7 @@ const InfoBox = styled.div`
   text-align: center;
   word-wrap: break-word;
   word-break: break-all;
-  animation:0.7s  ease-in-out fadeInEffect;
+  animation:0.7s  ease-in--out fadeInEffect;
   @keyframes fadeInEffect {
     0%{
         opacity: 0;

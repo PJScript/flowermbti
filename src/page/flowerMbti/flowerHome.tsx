@@ -116,7 +116,7 @@ max-width:400px;
 /* border: 1px solid green; */
 margin-top : 4px;
 align-items: center;
-animation:0.7s  ease-in-out fadeInEffect;
+animation:0.7s  ease-in--out fadeInEffect;
 @keyframes fadeInEffect {
     0%{
         

@@ -90,7 +90,7 @@ const VisibleQuestionBox = styled.div`
 display:flex;
 flex-direction: column;
 width:100%;
-animation: 0.7s ease-in-out fadeInEffect;
+animation: 0.7s ease-in--out fadeInEffect;
 @keyframes fadeInEffect {
     0%{
         opacity: 0;
@@ -106,7 +106,7 @@ display:flex;
 flex-direction: column;
 width:100%;
 pointer-events:none;
-animation: 0.2s ease-in-out fadeOutEffect;
+animation: 0.2s ease-in--out fadeOutEffect;
 @keyframes fadeOutEffect {
     0%{
         transform: translateY(0px);

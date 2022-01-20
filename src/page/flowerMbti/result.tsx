@@ -247,7 +247,7 @@ padding-left: 20px;
 padding-right:20px;
 width:370px;
 height:100%;
-animation: 0.6s ease-in-out fadeInEffect;
+animation: 0.6s ease-in--out fadeInEffect;
 
 @media screen and (max-width:433px){
   width:89%;
@@ -274,7 +274,7 @@ font-weight: bold;
 border-radius: 4px;
 width:100%;
 height:100%;
-animation:1.4s  ease-in-out fadeInEffect;
+animation:1.4s  ease-in--out fadeInEffect;
 
 
 @keyframes fadeInEffect {
@@ -301,7 +301,7 @@ border-radius: 4px;
 background-color:rgb(255, 231, 231);
 margin-bottom:20px;
 padding-bottom:20px;
-animation:0.7s  ease-in-out fadeInEffect;
+animation:0.7s  ease-in--out fadeInEffect;
 @keyframes fadeInEffect {
     0%{
         opacity: 0;
