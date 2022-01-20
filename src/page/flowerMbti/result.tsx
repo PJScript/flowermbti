@@ -85,7 +85,7 @@ const Result = ({...props}) => {
   useEffect(()=>{
     // console.log(data,"데이터")
   },[data])
-  console.log('rendering result')
+  // console.log('rendering result')
   if(loading){
     return (<Loading></Loading>)
   }else{
@@ -109,7 +109,7 @@ const Result = ({...props}) => {
     })
 
   window.onbeforeunload = () => {
-    console.log('새로고침 감지')
+    // console.log('새로고침 감지')
     
     return navigate('/project/1/result')
     // return "test"

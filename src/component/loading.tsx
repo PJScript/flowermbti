@@ -18,7 +18,7 @@ const Loading = ({ msg }: any) => {
 `;
   useEffect(()=>{ 
     setTimeout(()=>{
-      console.log('test')
+      // console.log('test')
       setAlertState(false)
     },3000)
   },[])

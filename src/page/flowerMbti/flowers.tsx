@@ -56,7 +56,7 @@ const Flowers = () => {
   const flowerListMaker = () => {
   
   }
-  console.log('rendering flowers')
+  // console.log('rendering flowers')
   return (
     <>
     

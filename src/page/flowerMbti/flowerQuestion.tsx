@@ -43,7 +43,7 @@ const FlowerQuestion = (): JSX.Element => {
   useEffect(()=>{
 
   },[show])
-  console.log('rendering Questions')
+  // console.log('rendering Questions')
   return (
     <>
       <GlobalBody />

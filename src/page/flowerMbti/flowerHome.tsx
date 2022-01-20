@@ -22,7 +22,7 @@ const FlowerHome = (): JSX.Element => {
   useEffect(()=>{
     dispatch(removeAnswer())
   },[])
-  console.log('rendering Home')
+  // console.log('rendering Home')
 
   // const {error, loading, data} = useQuery(GET_USERS,{variables:{id:1}})
 
