@@ -5,18 +5,18 @@ export const kakaoShareBtn = (requestUrl:string, templateId:number, imageUrl:str
   }
 
   if(templateId === undefined || !templateId){
-    templateId = 68174
-  }
-    // window.Kakao.Link.sendScrap({
-    //     requestUrl:'http://testweb.life',
-    //     templateId: 68174,
-    //     templateArgs: {
-    //       'title': '꽃 성격 테스트',
-    //       'description': '당신은 어떤 꽃인가요? 오직 당신만을 위한 테스트 바로 시작해보세요!',
-    //       'imageUrl': imageUrl
-    //     }
-    // });
-
+    // console.log('테스트')
+    // templateId = 68174
+    window.Kakao.Link.sendScrap({
+      requestUrl:'http://testweb.life',
+      templateId: 68174,
+      templateArgs: {
+        'title': '꽃 성격 테스트',
+        'description': '당신은 어떤 꽃인가요? 오직 당신만을 위한 테스트 바로 시작해보세요!',
+        'imageUrl': imageUrl
+      }
+  });
+  }else{
     window.Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
@@ -36,4 +36,8 @@ export const kakaoShareBtn = (requestUrl:string, templateId:number, imageUrl:str
           },
         }]
     })
+  }
+
+
+
 }
