@@ -41,7 +41,7 @@ background-color:rgb(245, 245, 245,0.7); /* whitesmoke */
 border:1px solid black;
 margin-bottom:20px;
 padding-bottom:20px;
-animation:0.7s  ease-in-out fadeInEffect;
+animation:0.7s  ease-in--out fadeInEffect;
 @keyframes fadeInEffect {
     0%{
         opacity: 0;

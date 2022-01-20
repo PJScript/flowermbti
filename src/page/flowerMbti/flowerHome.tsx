@@ -10,9 +10,6 @@ import { useQuery, gql } from '@apollo/client';
 import { GET_USERS } from '../../graphQl/queries';
 
 const FlowerHome = (): JSX.Element => {
-
-
-
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
@@ -116,7 +113,7 @@ max-width:400px;
 /* border: 1px solid green; */
 margin-top : 4px;
 align-items: center;
-animation:0.7s  ease-in-out fadeInEffect;
+animation:0.7s  ease-in--out fadeInEffect;
 @keyframes fadeInEffect {
     0%{
         

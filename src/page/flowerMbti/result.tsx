@@ -83,30 +83,37 @@ const Result = ({...props}) => {
 
     
   useEffect(()=>{
-    // console.log(data,"데이터")
+    console.log(data,"데이터")
   },[data])
   // console.log('rendering result')
+
   if(loading){
+    console.log(data,"로딩 중")
     return (<Loading></Loading>)
-  }else{
-    let arr = data.getMbtiContent.listDesc.split('.')
-    props.client.writeQuery({
-      query:GET_MBTICONTENT,
-      data:{
-        getMbtiContent:{
-          __typename:'FlowerInfo',
-          id:data.getMbtiContent.id,
-          desc:data.getMbtiContent.desc,
-          imgUrl:data.getMbtiContent.imgUrl,
-          mbtiCode:data.getMbtiContent.mbtiCode,
-          nickName:data.getMbtiContent.nickName,
-          engName:data.getMbtiContent.engName,
-          flowerName:data.getMbtiContent.flowerName,
-          listDesc:data.getMbtiContent.listDesc
-        },
-      },
-      variables:{mbtiCode:"INTJ"}
-    })
+  }else if(!loading){
+    console.log(data,"로딩끝")
+    // let arr = data.getMbtiContent.listDesc.split('.')
+    // console.log(arr,"배열")
+  }
+
+
+    // props.client.writeQuery({
+    //   query:GET_MBTICONTENT,
+    //   data:{
+    //     getMbtiContent:{
+    //       __typename:'FlowerInfo',
+    //       id:data.getMbtiContent.id,
+    //       desc:data.getMbtiContent.desc,
+    //       imgUrl:data.getMbtiContent.imgUrl,
+    //       mbtiCode:data.getMbtiContent.mbtiCode,
+    //       nickName:data.getMbtiContent.nickName,
+    //       engName:data.getMbtiContent.engName,
+    //       flowerName:data.getMbtiContent.flowerName,
+    //       listDesc:data.getMbtiContent.listDesc
+    //     },
+    //   },
+    //   variables:{mbtiCode:"INTJ"}
+    // })
 
   window.onbeforeunload = () => {
     // console.log('새로고침 감지')
@@ -126,16 +133,16 @@ const Result = ({...props}) => {
       <h2>결과</h2>
       <Section_wrapper>
         <SectionTitle>
-          <SectionTitleNickName>{data.getMbtiContent.nickName}</SectionTitleNickName>
-          <SectionTitleName>{data.getMbtiContent.flowerName}</SectionTitleName>
+          <SectionTitleNickName>{data.getMbtiContent[0].nickName}</SectionTitleNickName>
+          <SectionTitleName>{data.getMbtiContent[0].flowerName}</SectionTitleName>
         </SectionTitle>
         <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>
         <SectionBody>
           <MbtiFlowerImg>
-            <img width='80%' src={data.getMbtiContent.imgUrl}></img>
+            <img width='80%' src={data.getMbtiContent[0].imgUrl}></img>
           </MbtiFlowerImg>
           <SectionListContentUl>
-            {arr.map((item:string)=>{
+            {data.getMbtiContent[0].listDesc.split('.').map((item:string)=>{
               if(item === '' || item === undefined){
                 
               }else{
@@ -145,7 +152,7 @@ const Result = ({...props}) => {
             })}
 
           </SectionListContentUl>
-          <SectionContent>{data.getMbtiContent.desc}</SectionContent>
+          <SectionContent>{data.getMbtiContent[0].desc}</SectionContent>
         </SectionBody>
         {showRouteBox ?
           <RouteBtnBox>
@@ -169,7 +176,7 @@ const Result = ({...props}) => {
     </>
     )
   }
-}
+
 
 
 const Sample = styled.div`
@@ -247,7 +254,7 @@ padding-left: 20px;
 padding-right:20px;
 width:370px;
 height:100%;
-animation: 0.6s ease-in-out fadeInEffect;
+animation: 0.6s ease-in--out fadeInEffect;
 
 @media screen and (max-width:433px){
   width:89%;
@@ -274,7 +281,7 @@ font-weight: bold;
 border-radius: 4px;
 width:100%;
 height:100%;
-animation:1.4s  ease-in-out fadeInEffect;
+animation:1.4s  ease-in--out fadeInEffect;
 
 
 @keyframes fadeInEffect {
@@ -301,7 +308,7 @@ border-radius: 4px;
 background-color:rgb(255, 231, 231);
 margin-bottom:20px;
 padding-bottom:20px;
-animation:0.7s  ease-in-out fadeInEffect;
+animation:0.7s  ease-in--out fadeInEffect;
 @keyframes fadeInEffect {
     0%{
         opacity: 0;
