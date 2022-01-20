@@ -5,18 +5,19 @@ export const kakaoShareBtn = (requestUrl:string, templateId:number, imageUrl:str
   }
 
   if(templateId === undefined || !templateId){
-    // console.log('테스트')
+    console.log('test')
     // templateId = 68174
     window.Kakao.Link.sendScrap({
-      requestUrl:'http://testweb.life',
+      requestUrl:'https://testweb.life',
       templateId: 68174,
       templateArgs: {
-        'title': '꽃 성격 테스트',
-        'description': '당신은 어떤 꽃인가요? 오직 당신만을 위한 테스트 바로 시작해보세요!',
-        'imageUrl': imageUrl
+        title: '꽃 성격 테스트',
+        description: '당신은 어떤 꽃인가요? 오직 당신만을 위한 테스트 바로 시작해보세요!',
+        imageUrl: imageUrl
       }
   });
   }else{
+    console.log('test2')
     window.Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
@@ -24,7 +25,7 @@ export const kakaoShareBtn = (requestUrl:string, templateId:number, imageUrl:str
         description: '당신은 어떤 꽃인가요? 오직 당신만을 위한 테스트 바로 시작해보세요!',
         imageUrl:imageUrl,
         link: {
-          mobileWebUrl: 'http://testweb.life',
+          mobileWebUrl: 'https://testweb.life',
           androidExecutionParams: 'test',
         }
       },
@@ -32,7 +33,7 @@ export const kakaoShareBtn = (requestUrl:string, templateId:number, imageUrl:str
         {
           title: '테스트 해보기',
           link: {
-            mobileWebUrl: 'http://testweb.life',
+            mobileWebUrl: 'https://testweb.life',
           },
         }]
     })
