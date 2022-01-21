@@ -67,4 +67,60 @@ const useScript = (src:any) => {
     return status;
 }
 
-export { useScript };
+const AdfitScript_FlowerHomeBottom = () => {
+    useEffect(() => {
+      const ins: any = document.createElement('ins')
+      const script: any = document.createElement('script')
+
+      ins.className = 'kakao_ad_area'
+      ins.style = 'display:none'
+      script.async = 'true'
+      script.src = '//t1.daumcdn.net/kas/static/ba.min.js'
+      script.type = 'text/javascript'
+      ins.setAttribute('data-ad-unit', process.env.REACT_APP_ADFIT_FLOWERQUESTIONBOTTOM)
+      ins.setAttribute('data-ad-width', 320)
+      ins.setAttribute('data-ad-height', 50)
+
+      document.querySelector('.bottomAdfit')?.appendChild(ins)
+      document.querySelector('.bottomAdfit')?.appendChild(script)
+
+    }, [])
+}
+
+const AdfitScript_FlowerQuestion = () => {
+    const ins: any = document.createElement('ins')
+    const script: any = document.createElement('script')
+
+    ins.className = 'kakao_ad_area'
+    ins.style = 'display:none'
+    script.async = 'true'
+    script.src = '//t1.daumcdn.net/kas/static/ba.min.js'
+    script.type = 'text/javascript'
+    ins.setAttribute('data-ad-unit', process.env.REACT_APP_ADFIT_FLOWERHOMEBOTTOM)
+    ins.setAttribute('data-ad-width', 320)
+    ins.setAttribute('data-ad-height', 100)
+
+    document.querySelector('.bottomAdfit')?.appendChild(ins)
+    document.querySelector('.bottomAdfit')?.appendChild(script)
+}
+
+const AdfitScript_ResultCenter = () => {
+  console.log('잘됨')
+    const ins: any = document.createElement('ins')
+    const script: any = document.createElement('script')
+
+    ins.className = 'kakao_ad_area'
+    ins.style = 'display:none'
+    script.async = 'true'
+    script.src = '//t1.daumcdn.net/kas/static/ba.min.js'
+    script.type = 'text/javascript'
+    ins.setAttribute('data-ad-unit', process.env.REACT_APP_ADFIT_RESULTCENTER)
+    ins.setAttribute('data-ad-width', 320)
+    ins.setAttribute('data-ad-height', 100)
+    
+    document.querySelector('.centerAdfit')?.appendChild(ins)
+    document.querySelector('.centerAdfit')?.appendChild(script)
+
+}
+
+export { useScript, AdfitScript_FlowerHomeBottom, AdfitScript_FlowerQuestion, AdfitScript_ResultCenter };

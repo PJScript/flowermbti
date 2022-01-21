@@ -8,6 +8,8 @@ import { removeAnswer } from '../../redux/action';
 import { useEffect } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { GET_USERS } from '../../graphQl/queries';
+import { AdfitScript_FlowerHomeBottom} from '../../utils/hooks';
+
 
 const FlowerHome = (): JSX.Element => {
   const navigate = useNavigate();
@@ -22,6 +24,9 @@ const FlowerHome = (): JSX.Element => {
   // console.log('rendering Home')
 
   // const {error, loading, data} = useQuery(GET_USERS,{variables:{id:1}})
+
+    AdfitScript_FlowerHomeBottom()
+  console.log('렌더링')
 
   return (
     <>
@@ -47,11 +52,10 @@ const FlowerHome = (): JSX.Element => {
                   <SubTitleBox>
                     <p className="hover" onClick={()=>{navigate('/project/1/flowers')}}>무슨 꽃이 있나요?</p>
                     <p style={{fontWeight:'bold',color:'grey'}}>This site optimized Chrome, Firefox</p>
+                    <div className="bottomAdfit"></div>
                   </SubTitleBox>
               </TitleBox_center>
-
               </TitleBox>
-
             </MainContainer>
         </FlowerRootdiv>
       </ThemeProvider>

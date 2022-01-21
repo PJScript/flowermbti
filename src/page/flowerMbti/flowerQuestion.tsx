@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { insertAnswer } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import ProgressBar from "../../component/progressBar";
+import { AdfitScript_FlowerQuestion } from "../../utils/hooks";
 import '../../App.css'
 
 const FlowerQuestion = (): JSX.Element => {
@@ -46,6 +47,9 @@ const FlowerQuestion = (): JSX.Element => {
     window.removeEventListener('popstate',()=>{
     })
   },[])
+  useEffect(()=>{
+    AdfitScript_FlowerQuestion()  // 최초 랜더링 시 한번만 실행
+  },[])
 
   return (
     <>
@@ -54,6 +58,7 @@ const FlowerQuestion = (): JSX.Element => {
       <ProgressBar length={12} nowNum={count}></ProgressBar>
         <MainContainer>
           {show === true ?
+
           <VisibleQuestionBox>
             <QuestionBox_center>
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-flower1" viewBox="0 0 16 16" color="purple">
@@ -84,13 +89,16 @@ const FlowerQuestion = (): JSX.Element => {
             </DivisibleQuestionBox>
           }
         </MainContainer>
+        <div style={{width:'325px',height:'100px',paddingBottom:'10px'}}className="bottomAdfit"></div>
       </FlowerRootdiv>
+
     </>
   )
 }
 export default FlowerQuestion
 
 const VisibleQuestionBox = styled.div`
+
 display:flex;
 flex-direction: column;
 width:100%;
@@ -151,7 +159,7 @@ const AnswerBox_item = styled.li`
   color:black;
   width:100%;
   height:50px;
-  background-color:#D8E5C4;
+  background-color:#CDF0EA;
   border-radius: 6px;
   margin-bottom:15px;
   border:1px solid black;
@@ -179,6 +187,7 @@ font-size:14px;
 
 
 const MainContainer = styled.div`
+/* background-color:red; */
 display: flex;
 width:100%;
 height : 100%;

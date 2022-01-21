@@ -18,6 +18,7 @@ import Loading from "../../component/loading";
 import { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_MBTICONTENT_IMG_NAME } from "../../graphQl/queries";
+import { AdfitScript_ResultCenter } from "../../utils/hooks";
 
 interface listObjType {
   __typename:string,
@@ -52,12 +53,13 @@ const Flowers = () => {
   }  else  {
   return (
     <>
-      <GlobalBody />
-
-      <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>
-      <FlowerInfoModal visible={visible} setVisible={setVisible}></FlowerInfoModal>
-      <FlowersPageRootDiv style={{fontFamily:'NanumPenScript',fontSize:'1.5em'}}>
-        화단
+      {loading && imgStateStack < 16 ? <Loading></Loading> :
+        <>
+          <GlobalBody />
+          <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>
+          <FlowerInfoModal visible={visible} setVisible={setVisible}></FlowerInfoModal>
+          <FlowersPageRootDiv style={{ fontFamily: 'NanumPenScript', fontSize: '1.5em' }}>
+            화단
         <FlowerListContainer>
           <FlowerListTitle>
             <p style={{ color: "black" }}>친구에게 공유해서 더 많은 꽃을 찾아주세요!</p>
@@ -86,6 +88,7 @@ const Flowers = () => {
                 )
               })}
           </FlowerListUl>
+          <div style={{width:'350px',height:'110px'}} className="centerAdfit">AD.</div> 
           <GameBtnBox>
             <div className="hover" onClick={()=>alert('준비중 입니다! 곧 추가됨')}>미니게임 하러가기</div>
           </GameBtnBox>
@@ -94,10 +97,8 @@ const Flowers = () => {
           {/* <span className='hoverOrange'>더보기</span>
           <span style={{color:'#82D580'}}>24시간 기준으로 갱신됩니다!</span>
           <span style={{color:'#82D580'}}>내일은 어떤 꽃이 발견될까요!?</span> */}
-
           <GardenBtnContainer>
             {/* <div className='hoverOrange'>정원 입장</div> */}
-
             <p>재밌게 이용 하셨다면 공유 부탁드려요!</p>
           </GardenBtnContainer>
           <ToolBtnBox>
@@ -113,7 +114,8 @@ const Flowers = () => {
         </FlowerListContainer>
 
       </FlowersPageRootDiv>
-
+          </>
+          }
     </>
   )
   }
@@ -156,9 +158,9 @@ justify-items: center;
 width:95%;
 max-width:900px;
 list-style-type: none;
-border:1px solid green;
+border:3px solid #C0D8C0;
 /* background-color:rgb(253, 246, 237,0.9); */
-background-color:rgb(223, 195, 160,0.8);
+background-color:#F5EEDC;
 border-radius:6px;
 margin:0px;
 margin-top:10px;
@@ -241,7 +243,7 @@ const CardFront = styled.section`
   transform:rotateY(0deg);
   z-index:3;
   position:absolute;
-  background-color:rgb(245, 245, 245,0.8);
+  background-color:#EEEEEEe2;
   border-radius:6px;
 `
 
@@ -259,7 +261,6 @@ const CardBack = styled.div`
   transform:rotateY(180deg);
   z-index:2;
   position:absolute;
-  background-color:rgba(238, 202, 155, 0.5);
   /* background-color:red; */
   border-radius:6px;
   padding-bottom:13px;
@@ -372,4 +373,5 @@ const GameBtnBox = styled.div`
   border-radius:6px;
   margin-top:20px;
 `
+
 export default Flowers;

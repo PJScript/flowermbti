@@ -18,6 +18,7 @@ import InfoBoxComponent from "../../component/flowerMbti/infoBoxComponent";
 import { useQuery, gql } from '@apollo/client';
 import { GET_MBTICONTENT, PING } from "../../graphQl/queries";
 import Loading from "../../component/loading";
+import { AdfitScript_FlowerQuestion, AdfitScript_ResultCenter } from "../../utils/hooks";
 
 const Result = ({...props}) => {
   const dispatch = useDispatch()
@@ -25,8 +26,6 @@ const Result = ({...props}) => {
   let mbtiCode = scoreChecker(answerList)
   mbtiCode = mbtiCode.replaceAll(",","")
   const {error, loading, data} = useQuery(GET_MBTICONTENT,{variables:{mbtiCode:mbtiCode},fetchPolicy:"cache-first"})
-
-
 
   const navigate = useNavigate();
   const [showRouteBox, setShowRouteBox] = useState<boolean>(true)
@@ -68,54 +67,34 @@ const Result = ({...props}) => {
     });
   },[])
 
-    
+
   useEffect(()=>{
-    // console.log(data,"데이터")
     console.log('success')
   },[data])
-  // console.log('rendering result')
 
-  if(loading){
-    // console.log(data,"로딩 중")
-    console.log("loading")
-    return (<Loading></Loading>)
-  }else if(!loading){
-    console.log("arrive")
-  }
+  useEffect(()=>{
+    window.addEventListener('popstate',(e)=>{
+      navigate('/')
+    })
+    window.removeEventListener('popstate',()=>{
+    })
+  },[])
 
-
-    // props.client.writeQuery({
-    //   query:GET_MBTICONTENT,
-    //   data:{
-    //     getMbtiContent:{
-    //       __typename:'FlowerInfo',
-    //       id:data.getMbtiContent.id,
-    //       desc:data.getMbtiContent.desc,
-    //       imgUrl:data.getMbtiContent.imgUrl,
-    //       mbtiCode:data.getMbtiContent.mbtiCode,
-    //       nickName:data.getMbtiContent.nickName,
-    //       engName:data.getMbtiContent.engName,
-    //       flowerName:data.getMbtiContent.flowerName,
-    //       listDesc:data.getMbtiContent.listDesc
-    //     },
-    //   },
-    //   variables:{mbtiCode:"INTJ"}
-    // })
-
-  window.onbeforeunload = () => {
-    return navigate('/project/1/result')
-    // return "test"
-  }
-
-
-
+  useEffect(()=>{
+    if(!loading){
+        console.log('로딩중')
+        AdfitScript_ResultCenter()
+    }
+  },[loading])
   return (
     <>
-    <GlobalBody />    
-    <Sample>    
+    <GlobalBody /> 
+    {loading ? <Loading></Loading> : 
+    <Sample>   
       <FallingFlower></FallingFlower>
       Result Page
       <h2>결과</h2>
+
       <Section_wrapper>
         <SectionTitle>
           <SectionTitleNickName>{data.getMbtiContent[0].nickName}</SectionTitleNickName>
@@ -138,6 +117,7 @@ const Result = ({...props}) => {
           </SectionListContentUl>
           <SectionContent>{data.getMbtiContent[0].desc}</SectionContent>
         </SectionBody>
+        <div style={{width:'350px',height:'110px'}} className="centerAdfit"></div> 
         {showRouteBox ?
           <RouteBtnBox>
             <div className='hover' onClick={clickReplayBtn}>다시하기</div>
@@ -156,7 +136,7 @@ const Result = ({...props}) => {
 
         </Section_wrapper>
       </Sample>
-
+      }  
     </>
     )
   }
@@ -175,13 +155,12 @@ align-items: center;
 /* background-color:whitesmoke;  */
 color:black;
 font-weight: bold;
-/* background-position: fixed; */
+background-position: fixed;
 background-size:auto;
 /* background-blend-mode: difference; */
 /* background-repeat:no-repeat; */
 /* background-position: center; */
 background-attachment: fixed;
-
 `
 
 
