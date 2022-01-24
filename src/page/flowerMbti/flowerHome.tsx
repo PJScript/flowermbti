@@ -85,7 +85,7 @@ const SubTitleBox = styled.div`
   text-align: center;
   margin-top:10px;
   margin-bottom:40px;
-  mix-blend-mode:difference;
+  /* mix-blend-mode:difference; */
 `
 const SelectBtn = styled.button`
 background-color: ${(props)=> props.theme.colors.selectBtn};
