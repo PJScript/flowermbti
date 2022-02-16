@@ -52,7 +52,7 @@ const FlowerHome = (): JSX.Element => {
                   <SubTitleBox>
                     <p className="hover" onClick={()=>{navigate('/project/1/flowers')}}>무슨 꽃이 있나요?</p>
                     <p style={{fontWeight:'bold',color:'grey'}}>This site optimized Chrome, Firefox</p>
-                    <div className="bottomAdfit"></div>
+                    {/* <div className="bottomAdfit"></div> */}
                   </SubTitleBox>
               </TitleBox_center>
               </TitleBox>

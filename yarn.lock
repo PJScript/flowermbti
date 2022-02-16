@@ -2725,6 +2725,31 @@ babel-preset-react-app@^10.0.1:
     babel-plugin-macros "^3.1.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
 
+babylonjs-gltf2interface@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/babylonjs-gltf2interface/-/babylonjs-gltf2interface-4.2.1.tgz#d23c78a23a16771ad9e7f8f6d20b7c00b5ce0c33"
+  integrity sha512-ZBfKgIoztO1x1nyf9aPQJ+WXmB6Kw0VlyxvcKchIixbICqeeExiN8nmjvypwXC4hl+5ZDMnUKQNrIhh7uzulnA==
+
+babylonjs-loaders@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/babylonjs-loaders/-/babylonjs-loaders-4.2.1.tgz#52014ce702ef1144cf855d198d6075c8f83b0def"
+  integrity sha512-WLpbadXDyxbBQogU0SOrpwgAWN/DJ1xn5kCRD31NVoCbBIpvkdDIvzpRvze2esxrlv/KM8wbDu62ShJd6rQnVQ==
+  dependencies:
+    babylonjs "4.2.1"
+    babylonjs-gltf2interface "4.2.1"
+
+babylonjs-materials@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/babylonjs-materials/-/babylonjs-materials-4.2.1.tgz#47a97d33142371397e047965a9d303f11f24d2b1"
+  integrity sha512-nWyh95JOYF9rHYtGEBpaoU82XXIf7drFNxxf8FswdBYlD57nveEHae7tHLQakiGXtgqphqS4I+0UfbOJwBFk/w==
+  dependencies:
+    babylonjs "4.2.1"
+
+babylonjs@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-4.2.1.tgz#202808ac89f7c6bd5f1efa848f2781360034967e"
+  integrity sha512-FQdJ2VTENUpUJQ30ddihwTjV6K94kglET0P7jV8OQzjA4eez3sotmG22Fn9+8yb069SA26KnrAGOI2sKMQ7BCw==
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"

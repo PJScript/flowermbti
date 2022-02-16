@@ -19,6 +19,7 @@ import { gql } from '@apollo/client'
 import Home from './page/home';
 import './App.css'
 import {onError} from '@apollo/client/link/error'
+import Garden from './page/flowerMbti/garden';
 
 
 const App = (): JSX.Element => {
@@ -70,6 +71,7 @@ const App = (): JSX.Element => {
       <Route path="/project/1/question" element={<FlowerQuestion/>} />
       <Route path="/project/1/flowers" element={<Flowers/>} />
       <Route path="/project/1/result"  element={<Result client={client}/>} />
+      <Route path="/project/1/garden" element={<Garden />} />
     </Routes>
     </ApolloProvider>
     </>
