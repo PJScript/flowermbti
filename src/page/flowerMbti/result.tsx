@@ -37,7 +37,7 @@ const Result = ({...props}) => {
 
   const clickFlowersBtn = () => {
     
-    setAlertState(true)
+    navigate("/project/1/garden")
   }
   
 
