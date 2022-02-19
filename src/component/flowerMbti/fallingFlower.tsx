@@ -1,8 +1,10 @@
 import React,{useCallback}from "react";
 import styled from "styled-components";
-import cherryBlosoomIcon from "/home/js/Desktop/flowermbti/src/images/fallingflowerIcon/cherryBlossomIcon.png"
-import jasmineIcon from "/home/js/Desktop/flowermbti/src/images/fallingflowerIcon/jasmineIcon.png"
+import cherryBlossomIcon from "../../images/fallingflowerIcon/cherryBlossomIcon.png"
+import jasmineIcon from "../../images/fallingflowerIcon/jasmineIcon.png"
 import getRandom from "../../utils/getRandom";
+
+import test from "src/images/fallingflowerIcon/cherryBlossomIcon.png"
 
 
 
@@ -17,7 +19,7 @@ const FallingFlower = () => {
     let result: JSX.Element[] = []
 
     const keyframesArr: string[] = ['fallingR', 'fallingL', 'fallingN'];
-    const flowerNameArr: string[] = [jasmineIcon,cherryBlosoomIcon]
+    const flowerNameArr: string[] = [jasmineIcon,cherryBlossomIcon]
 
     let delaySecond: number = 0
 

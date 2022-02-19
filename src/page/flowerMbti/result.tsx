@@ -13,7 +13,7 @@ import { removeAnswer } from "../../redux/action";
 import getRandom  from "../../utils/getRandom";
 import FallingFlower from "../../component/flowerMbti/fallingFlower";
 import CustomAlert from "../../component/flowerMbti/customAlert";
-import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
+import flowerMbtiDefaultBackImg from '../../images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
 import InfoBoxComponent from "../../component/flowerMbti/infoBoxComponent";
 import { useQuery, gql } from '@apollo/client';
 import { GET_MBTICONTENT, PING } from "../../graphQl/queries";

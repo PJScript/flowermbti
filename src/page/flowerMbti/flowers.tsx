@@ -1,7 +1,7 @@
 import React from "react";
 import { GlobalBody, FlowerRootdiv } from "../../style/global-style";
-import result2 from "/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg"
-import TestImg from "/home/js/Desktop/flowermbti/src/images/fallingflowerIcon/cherryBlossomIcon.png"
+import result2 from "../../images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg"
+import TestImg from "../../images/fallingflowerIcon/cherryBlossomIcon.png"
 import styled from "styled-components";
 import '../../static/fonts/font.css'
 import dummyContent from "../../component/flowerMbti/dummyContent";

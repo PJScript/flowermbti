@@ -5,8 +5,8 @@
 
   
  
-  src: url("/home/js/Desktop/flowermbti/src/static/fonts/Shizuru-Regular.ttf") format("truetype"), url("/home/js/Desktop/flowermbti/src/static/fonts/Shizuru-Regular.ttf")
-      format("ttf"), url("/home/js/Desktop/flowermbti/src/static/fonts/Shizuru-Regular.ttf") format("embedded--opentype");
+  src: url("../fonts/Shizuru-Regular.ttf") format("truetype"), url("../fonts/Shizuru-Regular.ttf")
+      format("ttf"), url("../fonts//Shizuru-Regular.ttf") format("embedded--opentype");
 
   /* 사용할 폰트의 기본 스타일 */
   font-weight: 400;
@@ -20,8 +20,8 @@
 
   
  
-  src: url("/home/js/Desktop/flowermbti/src/static/fonts/NanumPenScript-Regular.ttf") format("truetype"), url("/home/js/Desktop/flowermbti/src/static/fonts/NanumPenScript-Regular.ttf")
-      format("ttf"), url("/home/js/Desktop/flowermbti/src/static/fonts/NanumPenScript-Regular.ttf") format("embedded--opentype");
+  src: url("../fonts/NanumPenScript-Regular.ttf") format("truetype"), url("../fonts/NanumPenScript-Regular.ttf")
+      format("ttf"), url("../fonts/NanumPenScript-Regular.ttf") format("embedded--opentype");
 
   /* 사용할 폰트의 기본 스타일 */
   font-weight: 400;
@@ -35,8 +35,8 @@
 
   
  
-  src: url("/home/js/Desktop/flowermbti/src/static/fonts/BlackAndWhitePicture-Regular.ttf") format("truetype"), url("/home/js/Desktop/flowermbti/src/static/fonts/BlackAndWhitePicture-Regular.ttf")
-      format("ttf"), url("/home/js/Desktop/flowermbti/src/static/fonts/BlackAndWhitePicture-Regular.ttf") format("embedded--opentype");
+  src: url("../fonts//BlackAndWhitePicture-Regular.ttf") format("truetype"), url("../fonts/BlackAndWhitePicture-Regular.ttf")
+      format("ttf"), url("../fonts/BlackAndWhitePicture-Regular.ttf") format("embedded--opentype");
 
   /* 사용할 폰트의 기본 스타일 */
   font-weight: 400;

@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { faceBookShareBtn } from "./shareBtn/faceBookShareBtn";
 import { kakaoShareBtn } from "./shareBtn/kakaoShareBtn";
-import kakao from '/home/js/Desktop/flowermbti/src/static/shareIcon/kakaolink_btn_medium_ov.png'
-import faceBook from '/home/js/Desktop/flowermbti/src/static/shareIcon/facebook.png'
+import kakao from "../../static/shareIcon/kakaolink_btn_medium_ov.png"
+import faceBook from '../../static/shareIcon/facebook.png'
 const ShareBoxFooter = ({mbtiFlowerUrl,mbtiContent}:any):JSX.Element => {
   return (
     <>

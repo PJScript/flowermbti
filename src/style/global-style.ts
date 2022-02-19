@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import flowerMbtiDefaultBackImg from '/home/js/Desktop/flowermbti/src/images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg'
+import flowerMbtiDefaultBackImg from "../images/flowerMbti/paper-flower-background-g7e808bf88_1920.jpg"
 export const FlowerRootdiv = styled.div`
   display:flex;
   flex-direction: column;
