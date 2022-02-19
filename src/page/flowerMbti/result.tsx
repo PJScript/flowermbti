@@ -18,6 +18,7 @@ import InfoBoxComponent from "../../component/flowerMbti/infoBoxComponent";
 import { useQuery, gql } from '@apollo/client';
 import { GET_MBTICONTENT, PING } from "../../graphQl/queries";
 import Loading from "../../component/loading";
+import { AdfitScript_FlowerQuestion, AdfitScript_ResultCenter } from "../../utils/hooks";
 
 const Result = ({...props}) => {
   const dispatch = useDispatch()
@@ -26,22 +27,17 @@ const Result = ({...props}) => {
   mbtiCode = mbtiCode.replaceAll(",","")
   const {error, loading, data} = useQuery(GET_MBTICONTENT,{variables:{mbtiCode:mbtiCode},fetchPolicy:"cache-first"})
 
-
-
   const navigate = useNavigate();
   const [showRouteBox, setShowRouteBox] = useState<boolean>(true)
   const [showSectionFooter, setShowSectionFooter] = useState<boolean>(false)
   const [showInfoBox, setShowInfoBox] = useState<boolean>(false)
-  const [mbtiContent, setMbti]  = useState<any>('')
-  const [mbtiFlowerUrl, setMbtiFlowerUrl] = useState<string>('')
   const [alertState, setAlertState] = useState<boolean>(false)
-  const [listDesc, setListDesc] = useState<string[]>(['test','test1'])
   
 
 
   const clickFlowersBtn = () => {
     
-    setAlertState(true)
+    navigate("/project/1/garden")
   }
   
 
@@ -53,12 +49,6 @@ const Result = ({...props}) => {
   }
 
   useEffect(() => {
-    
-
-
-
-
-
     window.addEventListener("scroll", (e) => {
       if (get_scroll_percentage() >= 30) {
         setShowRouteBox(true)
@@ -71,66 +61,40 @@ const Result = ({...props}) => {
         window.removeEventListener("scroll", (e) => {
         })
       }
-
-      window.addEventListener("onbeforeunload", (e)=>{
-        console.log(e,"여기")
-      })
       // console.log(window.innerHeight,"브라우저 높이")
       // console.log(document.documentElement.scrollHeight,"전체문서 높이")
       // console.log(window.scrollY,"스크롤한 높이")
     });
   },[])
 
-    
+
   useEffect(()=>{
-    console.log(data,"데이터")
+    console.log('success')
   },[data])
-  // console.log('rendering result')
 
-  if(loading){
-    console.log(data,"로딩 중")
-    return (<Loading></Loading>)
-  }else if(!loading){
-    console.log(data,"로딩끝")
-    // let arr = data.getMbtiContent.listDesc.split('.')
-    // console.log(arr,"배열")
-  }
+  useEffect(()=>{
+    window.addEventListener('popstate',(e)=>{
+      navigate('/')
+    })
+    window.removeEventListener('popstate',()=>{
+    })
+  },[])
 
-
-    // props.client.writeQuery({
-    //   query:GET_MBTICONTENT,
-    //   data:{
-    //     getMbtiContent:{
-    //       __typename:'FlowerInfo',
-    //       id:data.getMbtiContent.id,
-    //       desc:data.getMbtiContent.desc,
-    //       imgUrl:data.getMbtiContent.imgUrl,
-    //       mbtiCode:data.getMbtiContent.mbtiCode,
-    //       nickName:data.getMbtiContent.nickName,
-    //       engName:data.getMbtiContent.engName,
-    //       flowerName:data.getMbtiContent.flowerName,
-    //       listDesc:data.getMbtiContent.listDesc
-    //     },
-    //   },
-    //   variables:{mbtiCode:"INTJ"}
-    // })
-
-  window.onbeforeunload = () => {
-    // console.log('새로고침 감지')
-    
-    return navigate('/project/1/result')
-    // return "test"
-  }
-
-
-
+  useEffect(()=>{
+    if(!loading){
+        console.log('로딩중')
+        AdfitScript_ResultCenter()
+    }
+  },[loading])
   return (
     <>
-    <GlobalBody />    
-    <Sample>    
+    <GlobalBody /> 
+    {loading ? <Loading></Loading> : 
+    <Sample>   
       <FallingFlower></FallingFlower>
       Result Page
       <h2>결과</h2>
+
       <Section_wrapper>
         <SectionTitle>
           <SectionTitleNickName>{data.getMbtiContent[0].nickName}</SectionTitleNickName>
@@ -143,18 +107,17 @@ const Result = ({...props}) => {
           </MbtiFlowerImg>
           <SectionListContentUl>
             {data.getMbtiContent[0].listDesc.split('.').map((item:string)=>{
-              console.log(item,"아이템")
+              // console.log(item,"아이템")
               if(item === '' || item === undefined){
                 
               }else{
                 return <SectionListContentLi key={item}>{item}</SectionListContentLi>
               }
-
             })}
-
           </SectionListContentUl>
           <SectionContent>{data.getMbtiContent[0].desc}</SectionContent>
         </SectionBody>
+        <div style={{width:'350px',height:'110px'}} className="centerAdfit"></div> 
         {showRouteBox ?
           <RouteBtnBox>
             <div className='hover' onClick={clickReplayBtn}>다시하기</div>
@@ -173,7 +136,7 @@ const Result = ({...props}) => {
 
         </Section_wrapper>
       </Sample>
-
+      }  
     </>
     )
   }
@@ -192,13 +155,12 @@ align-items: center;
 /* background-color:whitesmoke;  */
 color:black;
 font-weight: bold;
-/* background-position: fixed; */
+background-position: fixed;
 background-size:auto;
 /* background-blend-mode: difference; */
 /* background-repeat:no-repeat; */
 /* background-position: center; */
 background-attachment: fixed;
-
 `
 
 

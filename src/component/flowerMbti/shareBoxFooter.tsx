@@ -5,7 +5,7 @@ import { faceBookShareBtn } from "./shareBtn/faceBookShareBtn";
 import { kakaoShareBtn } from "./shareBtn/kakaoShareBtn";
 import kakao from '/home/js/Desktop/flowermbti/src/static/shareIcon/kakaolink_btn_medium_ov.png'
 import faceBook from '/home/js/Desktop/flowermbti/src/static/shareIcon/facebook.png'
-const ShareBoxFooter = ({mbtiFlowerUrl,mbtiContent}:any):JSX.Element => {
+const ShareBoxFooter = ({mbtiFlowerUrl,mbtiContent,templateId}:any):JSX.Element => {
   return (
     <>
       <SectionFooter>
@@ -13,7 +13,7 @@ const ShareBoxFooter = ({mbtiFlowerUrl,mbtiContent}:any):JSX.Element => {
         <SectionFooterContent>
           <div>주변에 공유해 주세요!</div>
           <ShareBtnBox>
-            <ShareBtnKakao className='hover' onClick={() => kakaoShareBtn('test', 1, mbtiFlowerUrl, mbtiContent)} src={kakao}></ShareBtnKakao>
+            <ShareBtnKakao className='hover' onClick={() => kakaoShareBtn('test', templateId, mbtiFlowerUrl, mbtiContent)} src={kakao}></ShareBtnKakao>
             <ShareBtnFaceBook className='hover' onClick={() => faceBookShareBtn()}></ShareBtnFaceBook>
           </ShareBtnBox>
         </SectionFooterContent>
