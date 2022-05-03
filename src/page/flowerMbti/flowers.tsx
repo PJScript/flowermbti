@@ -15,57 +15,51 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { removeAnswer } from "../../redux/action";
 import Loading from "../../component/loading";
+import { useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_MBTICONTENT_IMG_NAME } from "../../graphQl/queries";
+import { AdfitScript_ResultCenter } from "../../utils/hooks";
+
+interface listObjType {
+  __typename:string,
+  id:string,
+  mbtiContent:string,
+  listDesc:string,
+  mbtiCode:string,
+  flowerName:string,
+  imgUrl:string,
+  nickName:string
+}
 const Flowers = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [visible, setVisible] = useState<Boolean>(true)
   const [alertState, setAlertState] = useState<Boolean>(false)
-  
-  const explodeBtn = useCallback(()=>{
+  const [imgStateStack, setImgStateStack] = useState<number>(0)
 
-  },[]) 
+  const{error, loading, data} = useQuery(GET_MBTICONTENT_IMG_NAME,{fetchPolicy:'cache-first'})
+  // console.log(data,'잘왔나')
 
   const clickReplayBtn = () => {
     dispatch(removeAnswer())
     navigate('/')
   }
-
-  // let test:any[] =  []
-  // test.push(
-  //   dummyContent('INTJ'),
-  //   dummyContent('INTP'),
-  //   dummyContent('ENTJ'),
-  //   dummyContent('ENTP'),
-  //   dummyContent('INFJ'),
-  //   dummyContent('INFP'),
-  //   dummyContent('ENFJ'),
-  //   dummyContent('ENFP'),
-  //   dummyContent('ISTJ'),
-  //   dummyContent('ISFJ'),
-  //   dummyContent('ESTJ'),
-  //   dummyContent('ESFJ'),
-  //   dummyContent('ISTP'),
-  //   dummyContent('ISFP'),
-  //   dummyContent('ESTP'),
-  //   dummyContent('ESFP'),
-  // )
   const clickImg = (t:any) => {
-
     setVisible(false)
   }
-  const flowerListMaker = () => {
-  
-  }
-  // console.log('rendering flowers')
+
+  if(loading && imgStateStack < 16){
+    return (<Loading></Loading>)
+  }  else  {
   return (
     <>
-    
-      <GlobalBody />
-      <Loading ></Loading>
-      <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>
-      <FlowerInfoModal visible={visible} setVisible={setVisible}></FlowerInfoModal>
-      <FlowersPageRootDiv style={{fontFamily:'NanumPenScript',fontSize:'1.5em'}}>
-        화단
+      {loading && imgStateStack < 16 ? <Loading></Loading> :
+        <>
+          <GlobalBody />
+          <CustomAlert visible={alertState} backEvent={false} setAlertState={setAlertState} title={'경고'} subTitle={'불편을 드려 죄송합니다.'} msg={'아직 준비중인 기능이에요!'}></CustomAlert>
+          <FlowerInfoModal visible={visible} setVisible={setVisible}></FlowerInfoModal>
+          <FlowersPageRootDiv style={{ fontFamily: 'NanumPenScript', fontSize: '1.5em' }}>
+            화단
         <FlowerListContainer>
           <FlowerListTitle>
             <p style={{ color: "black" }}>친구에게 공유해서 더 많은 꽃을 찾아주세요!</p>
@@ -73,18 +67,18 @@ const Flowers = () => {
           </FlowerListTitle>
 
           {/* <FlowerListSection> */}
-          {/* <FlowerListUl>
-              {test.map((item, idx) => {
-                // console.log(item, "아이템")
+          <FlowerListUl>
+              {data.getMbtiContent.map((item:listObjType, idx:number) => {
+                // console.log(idx,"인덱스")
                 FlowerImg.defaultProps = {
-                  src: item.img
+                  src: item.imgUrl
                 }
                   return (
                     <>
-                      <FlowerLi>
+                      <FlowerLi key={idx.toString()}>
                         <CardFront>
-                        <FlowerImg></FlowerImg>
-                        <FlowerImgTitle onClick={explodeBtn}>{item.flowerName}</FlowerImgTitle>
+                        <FlowerImg onLoad={()=>{setImgStateStack(imgStateStack+1)}}></FlowerImg>
+                        <FlowerImgTitle >{item.flowerName}</FlowerImgTitle>
                         </CardFront>
                         <CardBack>
                           <>{item.nickName} <br></br>{item.flowerName}</>
@@ -93,7 +87,8 @@ const Flowers = () => {
                   </>
                 )
               })}
-          </FlowerListUl> */}
+          </FlowerListUl>
+          <div style={{width:'350px',height:'110px'}} className="centerAdfit">AD.</div> 
           <GameBtnBox>
             <div className="hover" onClick={()=>alert('준비중 입니다! 곧 추가됨')}>미니게임 하러가기</div>
           </GameBtnBox>
@@ -102,10 +97,8 @@ const Flowers = () => {
           {/* <span className='hoverOrange'>더보기</span>
           <span style={{color:'#82D580'}}>24시간 기준으로 갱신됩니다!</span>
           <span style={{color:'#82D580'}}>내일은 어떤 꽃이 발견될까요!?</span> */}
-
           <GardenBtnContainer>
             {/* <div className='hoverOrange'>정원 입장</div> */}
-
             <p>재밌게 이용 하셨다면 공유 부탁드려요!</p>
           </GardenBtnContainer>
           <ToolBtnBox>
@@ -121,9 +114,11 @@ const Flowers = () => {
         </FlowerListContainer>
 
       </FlowersPageRootDiv>
-
+          </>
+          }
     </>
   )
+  }
 }
 
 const FlowersPageRootDiv = styled.div`
@@ -163,9 +158,9 @@ justify-items: center;
 width:95%;
 max-width:900px;
 list-style-type: none;
-border:1px solid green;
+border:3px solid #C0D8C0;
 /* background-color:rgb(253, 246, 237,0.9); */
-background-color:rgb(223, 195, 160,0.8);
+background-color:#F5EEDC;
 border-radius:6px;
 margin:0px;
 margin-top:10px;
@@ -248,7 +243,7 @@ const CardFront = styled.section`
   transform:rotateY(0deg);
   z-index:3;
   position:absolute;
-  background-color:rgb(245, 245, 245,0.8);
+  background-color:#EEEEEEe2;
   border-radius:6px;
 `
 
@@ -266,7 +261,6 @@ const CardBack = styled.div`
   transform:rotateY(180deg);
   z-index:2;
   position:absolute;
-  background-color:rgba(238, 202, 155, 0.5);
   /* background-color:red; */
   border-radius:6px;
   padding-bottom:13px;
@@ -370,12 +364,14 @@ animation:1.4s  ease-in--out fadeInEffect;
 }
 `
 
-const GameBtnBox = styled.p`
+const GameBtnBox = styled.div`
   width:95%;
   max-width:400px;
   height:100%;
   text-align: center;
   background-color:rgba(241,205,44,0.9);
   border-radius:6px;
+  margin-top:20px;
 `
+
 export default Flowers;

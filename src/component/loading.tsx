@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { ClipLoader } from 'react-spinners'
 import { css } from '@emotion/react'
-const Loading = ({ msg }: any) => {
+const Loading = ({ msg = '로딩중...' }: any) => {
   let [visible, setAlertState] = useState<Boolean>(true)
   
   // seAlertState 모달을 띄울 페이지에서 상태관리 true or false
@@ -16,12 +16,6 @@ const Loading = ({ msg }: any) => {
     margin: 0 auto;
     border-color: green;
 `;
-  useEffect(()=>{ 
-    setTimeout(()=>{
-      // console.log('test')
-      setAlertState(false)
-    },3000)
-  },[])
 
   return (
     <>
@@ -29,7 +23,7 @@ const Loading = ({ msg }: any) => {
         <LoadingInner className="spinner-border" role="status">
         <ClipLoader color="green" loading={true} css={override} size={20} />
           {/* <span className="visually-hidden">Loading...</span> */}
-          <div>로딩 중...</div>
+          <div>{msg}</div>
         </LoadingInner>
         {/* <LoadingMsg>{msg}</LoadingMsg> */}
           {/* <LoadingCheckBtn className='hoverOrange' onClick={() => setAlertState(false)}>확인</LoadingCheckBtn> */}
@@ -47,12 +41,15 @@ flex-direction: column;
 justify-content:center;
 align-items: center;
 height:100vh;
+width:100vw;
 position:fixed;
 background-color:white;
+z-index:100;
 
 /* background-image:white; */
-z-index:1;
-visibility:${(props) => (props.visible === true ? 'visible' : 'hidden')};
+/* z-index:1; */
+visibility:inherit;
+opacity:inherit;
 top:0;
 left:0;
 bottom:0;
@@ -71,7 +68,6 @@ const LoadingInner = styled.div`
   background-color:whitesmoke;
   color:black;
   font-weight: bold;
-  max-width: 360px;
   height:180px;
   border-radius: 5px;
   padding-bottom:5px;

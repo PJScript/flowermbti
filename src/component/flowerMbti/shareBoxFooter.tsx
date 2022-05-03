@@ -13,7 +13,7 @@ const ShareBoxFooter = ({mbtiFlowerUrl,mbtiContent}:any):JSX.Element => {
         <SectionFooterContent>
           <div>주변에 공유해 주세요!</div>
           <ShareBtnBox>
-            <ShareBtnKakao className='hover' onClick={() => kakaoShareBtn('test', 1, mbtiFlowerUrl, mbtiContent)} src={kakao}></ShareBtnKakao>
+            <ShareBtnKakao className='hover' onClick={() => kakaoShareBtn('test', mbtiFlowerUrl, mbtiContent)} src={kakao}></ShareBtnKakao>
             <ShareBtnFaceBook className='hover' onClick={() => faceBookShareBtn()}></ShareBtnFaceBook>
           </ShareBtnBox>
         </SectionFooterContent>
